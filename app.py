@@ -61,7 +61,7 @@ def movie_sep():
     timetable_url = requests.get('http://www.atmovies.com.tw/showtime/fcen44154738/a02/')
     timetable_text = etree.HTML(timetable_url.text)
     timetable = timetable_text.xpath('//a[@href=\"/showtime/t02e13/a02/\"]')
-    timetable_1 = timetable.getparent()
+    timetable_1 = timetable[0].getparent()
     timetable_2 = timetable_1.getparent()
     timetable_3 = timetable_2.xpath('li')
     cnt = 3
