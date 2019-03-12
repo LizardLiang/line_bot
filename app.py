@@ -35,8 +35,8 @@ def callback():
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     int_message = int(event.message.text) #to convert a string to a int
-    if int_message % 2 == 0:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("雙數")))
+    if "健" in event.message.text:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("單數")))
 
