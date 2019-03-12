@@ -36,11 +36,10 @@ def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     int_message = int(event.message.text) #to convert a string to a int
     if int_message % 2 == 0:
-        messge = TextSendMessage(text = "雙數")
+        messge = TextSendMessage(text="雙數")
         print("message =", event.message.text)
     else:
-        messge = TextSendMessage(text = "單數")
-        print("message =", event.message.text)
+        messge = TextSendMessage(text="單數")
     line_bot_api.reply_message(event.reply_token, message)
 
 import os
