@@ -56,7 +56,7 @@ def handle_join(event):
     print("JoinEvent =", JoinEvent)
     
 def movie_sep():
-    timetable_url = requests.get('http://www.atmovies.com.tw/showtime/fcen44154738/a02/')
+    timetable_url = request.get('http://www.atmovies.com.tw/showtime/fcen44154738/a02/')
     timetable_text = etree.HTML(timetable_url.text)
     timetable = timetable_text.xpath('//a[@href=\"/showtime/t02e13/a02/\"]')
     timetable_1 = timetable.getparent()
