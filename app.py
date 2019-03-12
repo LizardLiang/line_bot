@@ -38,8 +38,20 @@ def handle_message(event):
     if "健" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("單數")))
+        #line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("單數")))
 
+        
+@handler.add(JoinEvent)    
+def handle_join(event):
+    newcoming_text = "謝謝邀請我這個機器來至此群組！！我會盡力為大家服務的～"
+
+    line_bot_api.reply_message(
+            event.reply_token,
+            TextMessage(text=newcoming_text)
+        )
+    print("JoinEvent =", JoinEvent)
+    
+    
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
