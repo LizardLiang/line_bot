@@ -10,7 +10,7 @@ from linebot.models import *
 
 from lxml import etree
 
-from requests import requests
+import requests
 
 
 
