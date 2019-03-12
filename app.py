@@ -63,7 +63,7 @@ def movie_sep(str):
     timetable_2 = timetable_1.getparent()
     timetable_3 = timetable_2.xpath('li')
     cnt = 3
-    for cnt_1 = 0 in cnt:
+    for cnt_1 in range(3):
         result[cnt_1] = etree.tostring(timetable_3[cnt_1])
         print(result[cnt_1])
     
