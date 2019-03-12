@@ -35,9 +35,9 @@ def callback():
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     if message % 2 == 0:
-        messge = "雙數"
+        messge = '雙數'
     else:
-        messge = "單數" 
+        messge = '單數'
     line_bot_api.reply_message(event.reply_token, message)
 
 import os
