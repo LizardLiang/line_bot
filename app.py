@@ -34,7 +34,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    int_message = (int)message #to convert a string to a int
+    int_message = int(message) #to convert a string to a int
     if int_message % 2 == 0:
         messge = '雙數'
     else:
