@@ -37,8 +37,6 @@ def handle_message(event):
     #int_message = int(event.message.text) #to convert a string to a int
     if "健" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
-    else:
-        #line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("單數")))
 
         
 @handler.add(JoinEvent)    
