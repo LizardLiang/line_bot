@@ -8,6 +8,10 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+from lxml import etree
+
+
+
 app = Flask(__name__)
 
 # Channel Access Token
@@ -37,6 +41,8 @@ def handle_message(event):
     #int_message = int(event.message.text) #to convert a string to a int
     if "健" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
+    elif "!movie":
+        movie_sep()
 
         
 @handler.add(JoinEvent)    
@@ -48,6 +54,18 @@ def handle_join(event):
             TextMessage(text=newcoming_text)
         )
     print("JoinEvent =", JoinEvent)
+    
+def movie_sep(str):
+    timetable_url = requests.get('http://www.atmovies.com.tw/showtime/fcen44154738/a02/')
+    timetable_text = etree.HTML(timetable_url.text)
+    timetable = timetable_text.xpath('//a[@href=\"/showtime/t02e13/a02/\"]')
+    timetable_1 = timetable.getparent()
+    timetable_2 = timetable_1.getparent()
+    timetable_3 = timetable_2.xpath('li')
+    cnt = 3
+    for cnt_1 = 0 in cnt:
+        result[cnt_1] = etree.tostring(timetable_3[cnt_1])
+        print(result[cnt_1])
     
     
 import os
