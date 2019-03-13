@@ -42,6 +42,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
+    game_key = 0
     #int_message = int(event.message.text) #to convert a string to a int
     if event.message.text == "健":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
@@ -80,6 +81,17 @@ def handle_message(event):
         text_num = "擲到的點數是: "
         text_num = text_num + str(num) + str(num_1) + str(num_2)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=text_num))
+    if "!終極密碼" == event.message.text:
+        game_key = random.randint(1,1000)
+    if "!猜" in event.message.text:
+        game_num = event.message.text.split("-")
+        if int(game_num[1]) > game_key:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("太大了，幹")))
+        elif int(game_num[1]) < game_key:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("太小了，跟你雞雞一樣")))
+        elif int(game_num[1]) == game_key:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("爆了齁，再玩啊")))
+        
         
 
         
