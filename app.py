@@ -88,6 +88,7 @@ def find_movie(name):
     for cnt in range(len(r_3)):
         r_4 = r_3[0].xpath('a')
         t_1 = r_4[0].xpath('text()')
+        print(t_1)
         if name in t_1:
             t_2 = r_4[0].attrib['href']
             t_3 = t_2.split('/')
