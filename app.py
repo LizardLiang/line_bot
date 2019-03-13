@@ -43,8 +43,10 @@ def handle_message(event):
     #int_message = int(event.message.text) #to convert a string to a int
     if "123" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
-    elif "!movie" in event.message.text:
-        reply_text = movie_sep()
+    elif "!movie-" in event.message.text:
+        cut = event.message.text.splt('-')
+        cut_1 = find_movie(cut[1])
+        reply_text = movie_sep(cut_1)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
         
 
@@ -59,8 +61,11 @@ def handle_join(event):
         )
     print("JoinEvent =", JoinEvent)
     
-def movie_sep():
-    timetable_url = requests.get('http://www.atmovies.com.tw/showtime/fcen44154738/a02/')
+def movie_sep(string1):
+    timetable_urL = 'http://www.atmovies.com.tw/showtime/'
+    timetable_urL += string1
+    timetable_urL += '/a02/'
+    timetable_url = requests.get(timetable_urL)
     timetable_text = etree.HTML(timetable_url.text)
     timetable = timetable_text.xpath('//a[@href=\"/showtime/t02e13/a02/\"]')
     reply_text = ""
@@ -75,7 +80,20 @@ def movie_sep():
             print(result)
     return reply_text
     
-    
+
+def find_movie(name):
+    r_1 = requests.get('http://www.atmovies.com.tw/showtime/t02e13/a02/')
+    r_2 = etree.HTML(r_1.text)
+    r_3 = r_2.xpath('//li[@class=\"filmTitle\"]')
+    for cnt in range(len(r_3)):
+        r_4 = r_3[0].xpath('a')
+        t_1 = r_4[0].xpath('text()')
+        if name in t_1:
+            t_2 = r_4[0].attrib['href']
+            t_3 = t_1.split('/')
+            break
+    return t_3[2]
+
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
