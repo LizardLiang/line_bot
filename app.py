@@ -82,7 +82,7 @@ def movie_sep(string1):
         for cnt_1 in range(len(timetable_3)):
             result = timetable_3[cnt_1].xpath('text()')
             print(result)
-            if result != "":
+            if result != None:
                 result_1 += result
                 result_1 += "\n"
     reply_text = reply_text.join(result_1)
@@ -90,13 +90,13 @@ def movie_sep(string1):
     
 
 def find_movie(name):
-    r_1 = requests.get('http://www.atmovies.com.tw/showtime/t02e13/a02/')
+    r_1 = requests.get('http://www.atmovies.com.tw/showtime/t02e13/a02/') #讀取樹林秀泰的網頁
     r_2 = etree.HTML(r_1.text)
-    r_3 = r_2.xpath('//li[@class=\"filmTitle\"]')
+    r_3 = r_2.xpath('//li[@class=\"filmTitle\"]') #讀出所有電影名稱
     for cnt in range(len(r_3)):
         r_4 = r_3[cnt].xpath('a')
-        t_1 = r_4[0].xpath('text()')
-        if name in t_1:
+        t_1 = r_4[0].xpath('text()') 
+        if name in t_1: #比較電影名稱
             t_2 = r_4[0].attrib['href']
             t_3 = t_2.split('/')
             return t_3[2]
