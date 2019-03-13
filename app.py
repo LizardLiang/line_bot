@@ -82,7 +82,7 @@ def movie_sep(string1):
         for cnt_1 in range(len(timetable_3)):
             result = timetable_3[cnt_1].xpath('text()')
             print(result)
-            if len(result) != 0 and '\r' not in result:
+            if len(result) != 0 and ' \r\n\t\t\t\t\t\t\t\t' not in result:
                 result_1 += result
                 result_1 += "\n"
     reply_text = reply_text.join(result_1)
