@@ -84,7 +84,7 @@ def movie_sep(string1):
             result_1 += result
             result_1 += "\n"
     reply_text = reply_text.join(result_1)
-    print(result_text)
+    print(reply_text)
     return reply_text
     
 
