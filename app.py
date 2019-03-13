@@ -14,9 +14,6 @@ import requests
 
 import random
 
-
-game_key = 0
-
 app = Flask(__name__)
 
 # Channel Access Token
@@ -24,6 +21,7 @@ line_bot_api = LineBotApi('U8y83kp/oua8dGGGGxGaJtPHkPbH0EX5xsIPLSs5mei/WF1jiLLPu
 # Channel Secret
 handler = WebhookHandler('de13dee56ac904472fb56653553ba55b')
 
+game_key = 0
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
