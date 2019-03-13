@@ -41,7 +41,7 @@ def callback():
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     #int_message = int(event.message.text) #to convert a string to a int
-    if "123" in event.message.text:
+    if event.message.text == "健":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
     if "!movie-" in event.message.text:
         cut = event.message.text.split('-') #拆出指令與電影名稱
