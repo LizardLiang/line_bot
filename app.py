@@ -86,7 +86,7 @@ def find_movie(name):
     r_2 = etree.HTML(r_1.text)
     r_3 = r_2.xpath('//li[@class=\"filmTitle\"]')
     for cnt in range(len(r_3)):
-        r_4 = r_3[0].xpath('a')
+        r_4 = r_3[cnt].xpath('a')
         t_1 = r_4[0].xpath('text()')
         print(t_1)
         if name in t_1:
