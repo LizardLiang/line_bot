@@ -122,6 +122,7 @@ def buy_ticket(date):
     t = etree.HTML(r.text)
     key = ""
     key = '//option[@value=\"' + date[1] + '-' + date[2] + '-' + date[3] + '\"]'
+    print(key)
     t_1 = t.xpath(key)
     r_1 = 'https://www.showtimes.com.tw/events?corpId=54'
     if date != 0 and len(t_1) != 0:
