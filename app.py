@@ -74,11 +74,11 @@ def movie_sep(string1):
     timetable_text = etree.HTML(timetable_url.text)
     timetable = timetable_text.xpath('//a[@href=\"/showtime/t02e13/a02/\"]')
     reply_text = ""
+    result_1 = list()
     for cnt in range(len(timetable)):
         timetable_1 = timetable[cnt].getparent()
         timetable_2 = timetable_1.getparent()
         timetable_3 = timetable_2.xpath('li')
-        result_1 = list()
         for cnt_1 in range(len(timetable_3)):
             result = timetable_3[cnt_1].xpath('text()')
             result_1 += result
