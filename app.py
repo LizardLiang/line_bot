@@ -56,6 +56,8 @@ def handle_message(event):
     elif "!訂票" in event.message.text:
         try:
             date = event.message.text.split('-')
+        except ValueError:
+            print("just book")
         if len(date) > 1 :
             b_url = but_ticket(date)
         else:
