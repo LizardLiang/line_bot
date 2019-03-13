@@ -44,7 +44,7 @@ def handle_message(event):
     if "123" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
     elif "!movie-" in event.message.text:
-        cut = event.message.text.splt('-')
+        cut = event.message.text.split('-')
         cut_1 = find_movie(cut[1])
         reply_text = movie_sep(cut_1)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
