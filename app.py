@@ -48,6 +48,8 @@ def handle_message(event):
         cut_1 = find_movie(cut[1])
         reply_text = movie_sep(cut_1)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
+    elif "慈孤觀音" in event.message.text:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("輕者當日，重者七日\n你要對慈孤觀音有信心")))
         
 
         
