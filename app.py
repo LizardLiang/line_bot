@@ -43,7 +43,7 @@ def handle_message(event):
     #int_message = int(event.message.text) #to convert a string to a int
     if "123" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
-    elif "!movie-" in event.message.text:
+    if "!movie-" in event.message.text:
         cut = event.message.text.split('-') #拆出指令與電影名稱
         cut_1 = find_movie(cut[1]) #去尋找電影
         if "find nothing" in cut_1:
@@ -51,9 +51,9 @@ def handle_message(event):
         else:
             reply_text = movie_sep(cut_1) #找到電影後，去找時刻
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
-    elif "慈孤觀音" in event.message.text:
+    if "慈孤觀音" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("輕者當日，重者七日\n你要對慈孤觀音有信心")))
-    elif "!訂票" in event.message.text:
+    if "!訂票" in event.message.text:
         try:
             date = event.message.text.split('-')
         except ValueError:
