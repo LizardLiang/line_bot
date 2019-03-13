@@ -97,6 +97,8 @@ def handle_message(event):
             print(game_key)
             game_key = random.randint(1,1000)
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("爆了齁，再玩啊")))
+    if "柏翰" in event.message.text:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("汪汪汪")))
         
         
 
