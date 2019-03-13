@@ -46,8 +46,11 @@ def handle_message(event):
     elif "!movie-" in event.message.text:
         cut = event.message.text.split('-')
         cut_1 = find_movie(cut[1])
-        reply_text = movie_sep(cut_1)
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
+        if "find nothing" in cut_1:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('無此電影場次')))
+        else:
+            reply_text = movie_sep(cut_1)
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
     elif "慈孤觀音" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("輕者當日，重者七日\n你要對慈孤觀音有信心")))
         
@@ -96,7 +99,9 @@ def find_movie(name):
             t_3 = t_2.split('/')
             return t_3[2]
             break
-    return 0
+        else:
+            t_2 = "find nothing"
+    return t_2
 
 import os
 if __name__ == "__main__":
