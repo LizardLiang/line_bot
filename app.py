@@ -73,7 +73,7 @@ def handle_message(event):
         text_num = "擲到的點數是: "
         text_num += str(num)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=text_num))
-    if "!十八拉" == event.message.text:
+    if "!十八拉" == event.message.text or "!十八啦" == event.message.text:
         num = random.randint(1,6)
         num_1 = random.randint(1,6)
         num_2 = random.randint(1,6)
