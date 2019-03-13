@@ -59,9 +59,9 @@ def handle_message(event):
         except ValueError:
             print("just book")
         if len(date) > 1 :
-            b_url = but_ticket(date)
+            b_url = buy_ticket(date)
         else:
-            b_url = but_ticket(0)
+            b_url = buy_ticket(0)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=b_url))
         
 
