@@ -44,7 +44,9 @@ def handle_message(event):
     if "123" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
     elif "!movie":
-        movie_sep()
+        reply_text = movie_sep()
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
+        
 
         
 @handler.add(JoinEvent)    
@@ -66,7 +68,10 @@ def movie_sep():
     timetable_3 = timetable_2.xpath('li')
     for cnt_1 in range(3):
         result = timetable_3[cnt_1].xpath('text()')
+        reply_text += result
+        reply_text += "/r"
         print(result)
+    return reply_text
     
     
 import os
