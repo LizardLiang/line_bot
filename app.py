@@ -15,6 +15,7 @@ import requests
 import random
 
 
+game_key = 0
 
 app = Flask(__name__)
 
