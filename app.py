@@ -81,6 +81,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=text_num))
     if "!終極密碼" == event.message.text:
         global game_key = random.randint(1,1000)
+        game_key = random.randint(1,1000)
         print(game_key)
     if "!猜" in event.message.text:
         game_num = event.message.text.split("-")
