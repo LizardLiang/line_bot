@@ -81,10 +81,11 @@ def movie_sep(string1):
         timetable_3 = timetable_2.xpath('li')
         for cnt_1 in range(len(timetable_3)):
             result = timetable_3[cnt_1].xpath('text()')
-            result_1 += result
-            result_1 += "\n"
+            if result == "":
+            else:
+                result_1 += result
+                result_1 += "\n"
     reply_text = reply_text.join(result_1)
-    print(reply_text)
     return reply_text
     
 
@@ -95,12 +96,10 @@ def find_movie(name):
     for cnt in range(len(r_3)):
         r_4 = r_3[cnt].xpath('a')
         t_1 = r_4[0].xpath('text()')
-        print(t_1)
         if name in t_1:
             t_2 = r_4[0].attrib['href']
             t_3 = t_2.split('/')
             return t_3[2]
-            break
         else:
             t_2 = "find nothing"
     return t_2
