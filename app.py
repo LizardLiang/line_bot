@@ -81,7 +81,7 @@ def movie_sep(string1):
         timetable_3 = timetable_2.xpath('li')
         for cnt_1 in range(len(timetable_3)):
             result = timetable_3[cnt_1].xpath('text()')
-            print(len(result)
+            print(len(result))
             if result != None:
                 result_1 += result
                 result_1 += "\n"
@@ -99,9 +99,9 @@ def find_movie(name):
         if name in t_1: #比較電影名稱
             t_2 = r_4[0].attrib['href']
             t_3 = t_2.split('/')
-            return t_3[2]
+            return t_3[2] #有找到的話，回傳網址
         else:
-            t_2 = "find nothing"
+            t_2 = "find nothing" #沒找到的話，回傳nothing
     return t_2
 
 import os
