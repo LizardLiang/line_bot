@@ -70,7 +70,7 @@ def movie_sep():
     for cnt_1 in range(3):
         result = timetable_3[cnt_1].xpath('text()')
         reply_text += str(result)
-        reply_text += "/r"
+        reply_text += "\n"
         print(result)
     return reply_text
     
