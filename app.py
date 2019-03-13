@@ -81,8 +81,7 @@ def movie_sep(string1):
         timetable_3 = timetable_2.xpath('li')
         for cnt_1 in range(len(timetable_3)):
             result = timetable_3[cnt_1].xpath('text()')
-            if result == "":
-            else:
+            if result != "":
                 result_1 += result
                 result_1 += "\n"
     reply_text = reply_text.join(result_1)
