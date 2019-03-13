@@ -76,8 +76,9 @@ def handle_message(event):
         num = random.randint(1,6)
         num_1 = random.randint(1,6)
         num_2 = random.randint(1,6)
+        num_3 = random.randint(1,6)
         text_num = "擲到的點數是: "
-        text_num = text_num + str(num) + '、' + str(num_1) + '、' + str(num_2)
+        text_num = text_num + str(num) + '、' + str(num_1) + '、' + str(num_2) + '、' + str(num_3)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=text_num))
     if "!終極密碼" == event.message.text:
         global game_key
