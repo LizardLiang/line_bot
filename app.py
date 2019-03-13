@@ -77,7 +77,7 @@ def handle_message(event):
         num_1 = random.randint(1,6)
         num_2 = random.randint(1,6)
         text_num = "擲到的點數是: "
-        text_num = text_num + str(num) + str(num_1) + str(num_2)
+        text_num = text_num + str(num) + '、' + str(num_1) + '、' + str(num_2)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=text_num))
     if "!終極密碼" == event.message.text:
         global game_key
@@ -102,7 +102,7 @@ def handle_message(event):
         
 @handler.add(JoinEvent)    
 def handle_join(event): #加入群組，會回復
-    newcoming_text = "恭迎慈姑觀音 渡世靈顯四方"
+    newcoming_text = "恭迎慈孤觀音 渡世靈顯四方"
 
     line_bot_api.reply_message(
             event.reply_token,
