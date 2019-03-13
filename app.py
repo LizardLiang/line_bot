@@ -49,7 +49,7 @@ def handle_message(event):
         if "find nothing" in cut_1:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('無此電影場次')))
         else:
-            reply_text = movie_sep(cut_1)
+            reply_text = movie_sep(cut_1) #找到電影後，去找時刻
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
     elif "慈孤觀音" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("輕者當日，重者七日\n你要對慈孤觀音有信心")))
@@ -57,7 +57,7 @@ def handle_message(event):
 
         
 @handler.add(JoinEvent)    
-def handle_join(event):
+def handle_join(event): #加入群組，會回復
     newcoming_text = "恭迎慈姑觀音 渡世靈顯四方"
 
     line_bot_api.reply_message(
@@ -72,20 +72,20 @@ def movie_sep(string1):
     timetable_urL += '/a02/'
     timetable_url = requests.get(timetable_urL)
     timetable_text = etree.HTML(timetable_url.text)
-    timetable = timetable_text.xpath('//a[@href=\"/showtime/t02e13/a02/\"]')
+    timetable = timetable_text.xpath('//a[@href=\"/showtime/t02e13/a02/\"]') #透過這個去反推我要的電影時刻在哪裡
     reply_text = ""
     result_1 = list()
     for cnt in range(len(timetable)):
-        timetable_1 = timetable[cnt].getparent()
-        timetable_2 = timetable_1.getparent()
-        timetable_3 = timetable_2.xpath('li')
+        timetable_1 = timetable[cnt].getparent() 
+        timetable_2 = timetable_1.getparent() #電影時刻的父標籤
+        timetable_3 = timetable_2.xpath('li') #找到時刻的標籤
         for cnt_1 in range(len(timetable_3)):
-            result = timetable_3[cnt_1].xpath('text()')
+            result = timetable_3[cnt_1].xpath('text()') #轉為 string -> 但是不知道為啥是 list
             print(result)
-            if len(result) != 0 and ' \r\n\t\t\t\t\t\t\t\t' not in result:
-                result_1 += result
+            if len(result) != 0 and ' \r\n\t\t\t\t\t\t\t\t' not in result: #去掉空白的跟巨幕廳下面的換行符
+                result_1 += result #把list合起來
                 result_1 += "\n"
-    reply_text = reply_text.join(result_1)
+    reply_text = reply_text.join(result_1) #把 list 加到 string 裡面
     return reply_text
     
 
