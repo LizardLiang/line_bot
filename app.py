@@ -119,7 +119,7 @@ def find_movie(name):
 
 def buy_ticket(date):
     r = requests.get('https://www.showtimes.com.tw/events?corpId=54')
-    t = etree.HTML(r.text())
+    t = etree.HTML(r.text)
     key = ""
     key = '//option[@value=\"' + date[1] + '-' + date[2] + '-' + date[3] + '\"]'
     t_1 = r.xpath(key)
