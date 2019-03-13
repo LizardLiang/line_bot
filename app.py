@@ -62,7 +62,10 @@ def handle_message(event):
             b_url = buy_ticket(date)
         else:
             b_url = buy_ticket(0)
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=b_url))
+        if b_url == "find nothing":
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("尚無此日期場次")))
+        else :
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=b_url))
         
 
         
@@ -115,14 +118,16 @@ def find_movie(name):
     return t_2
 
 def buy_ticket(date):
+    r = requests.get('https://www.showtimes.com.tw/events?corpId=54')
+    t = etree.HTML(r)
+    key = ""
+    key = '//option[@value=\"' + date[1] + '-' + date[2] + '-' + date[3] + '\"]'
+    t_1 = r.xpath(key)
     r_1 = 'https://www.showtimes.com.tw/events?corpId=54'
-    if date != 0:
-        r_1 += '&date='
-        r_1 += date[1]
-        r_1 += '/'
-        r_1 += date[2]
-        r_1 += '/'
-        r_1 += date[3]
+    if date != 0 and len(t_1) != 0:
+        r_1 += '&date=' + date[1] + '/' + date[2] + '/' + date[3]
+    else :
+        r_1 = "find nothing"
     return r_1
 
 import os
