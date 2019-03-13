@@ -90,7 +90,7 @@ def find_movie(name):
         t_1 = r_4[0].xpath('text()')
         if name in t_1:
             t_2 = r_4[0].attrib['href']
-            t_3 = t_1.split('/')
+            t_3 = t_2.split('/')
             break
     return t_3[2]
 
