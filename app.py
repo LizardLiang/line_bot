@@ -12,6 +12,8 @@ from lxml import etree
 
 import requests
 
+import random
+
 
 
 app = Flask(__name__)
@@ -66,6 +68,9 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("尚無此日期場次")))
         else :
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=b_url))
+    if "!擲骰子" == event.message.text:
+        num = randon.ranint(1,6)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str(num)))
         
 
         
