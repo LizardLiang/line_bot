@@ -94,7 +94,6 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("太小了，跟你雞雞一樣")))
         elif int(game_num[1]) == game_key:
             print(game_key)
-            global game_key
             game_key = random.randint(1,1000)
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("爆了齁，再玩啊")))
         
