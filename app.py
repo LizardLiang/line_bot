@@ -63,15 +63,16 @@ def movie_sep():
     timetable_url = requests.get('http://www.atmovies.com.tw/showtime/fcen44154738/a02/')
     timetable_text = etree.HTML(timetable_url.text)
     timetable = timetable_text.xpath('//a[@href=\"/showtime/t02e13/a02/\"]')
-    timetable_1 = timetable[0].getparent()
-    timetable_2 = timetable_1.getparent()
-    timetable_3 = timetable_2.xpath('li')
     reply_text = ""
-    for cnt_1 in range(len(timetable_3)):
-        result = timetable_3[cnt_1].xpath('text()')
-        reply_text += str(result)
-        reply_text += "\n"
-        print(result)
+    for cnt in range(len(timetable)):
+        timetable_1 = timetable[cnt].getparent()
+        timetable_2 = timetable_1.getparent()
+        timetable_3 = timetable_2.xpath('li')
+        for cnt_1 in range(len(timetable_3)):
+            result = timetable_3[cnt_1].xpath('text()')
+            reply_text += str(result)
+            reply_text += "\n"
+            print(result)
     return reply_text
     
     
