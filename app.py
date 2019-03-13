@@ -91,8 +91,9 @@ def find_movie(name):
         if name in t_1:
             t_2 = r_4[0].attrib['href']
             t_3 = t_2.split('/')
+            return t_3[2]
             break
-    return t_3[2]
+    return 0
 
 import os
 if __name__ == "__main__":
