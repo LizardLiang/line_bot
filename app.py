@@ -119,7 +119,8 @@ def find_movie(name):
 
 def buy_ticket(date):
     r_1 = 'https://www.showtimes.com.tw/events?corpId=54'
-    r_1 += '&date=' + str(date[1]) + '/' + str(date[2]) + '/' + str(date[3])
+    if date != 0 :
+        r_1 += '&date=' + str(date[1]) + '/' + str(date[2]) + '/' + str(date[3])
     return r_1
 
 import os
