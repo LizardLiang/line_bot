@@ -44,8 +44,8 @@ def handle_message(event):
     if "123" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
     elif "!movie-" in event.message.text:
-        cut = event.message.text.split('-')
-        cut_1 = find_movie(cut[1])
+        cut = event.message.text.split('-') #拆出指令與電影名稱
+        cut_1 = find_movie(cut[1]) #去尋找電影
         if "find nothing" in cut_1:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('無此電影場次')))
         else:
@@ -81,7 +81,7 @@ def movie_sep(string1):
         timetable_3 = timetable_2.xpath('li')
         for cnt_1 in range(len(timetable_3)):
             result = timetable_3[cnt_1].xpath('text()')
-            print(len(result))
+            print(result)
             if result != None:
                 result_1 += result
                 result_1 += "\n"
