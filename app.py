@@ -70,7 +70,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=b_url))
     if "!擲骰子" == event.message.text:
         num = random.randint(1,6)
-        text_num = "擲到的點數是 :"
+        text_num = "擲到的點數是: "
         text_num += str(num)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=text_num))
         
