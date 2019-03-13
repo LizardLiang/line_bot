@@ -41,7 +41,7 @@ def callback():
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     #int_message = int(event.message.text) #to convert a string to a int
-    if "健" in event.message.text:
+    if "123" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
     elif "!movie":
         movie_sep()
@@ -65,7 +65,7 @@ def movie_sep():
     timetable_2 = timetable_1.getparent()
     timetable_3 = timetable_2.xpath('li')
     for cnt_1 in range(3):
-        result = etree.tostring(timetable_3[cnt_1])
+        result = timetable_3.xpath('/text()')
         print(result)
     
     
