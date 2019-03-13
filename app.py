@@ -67,7 +67,7 @@ def movie_sep():
     timetable_2 = timetable_1.getparent()
     timetable_3 = timetable_2.xpath('li')
     reply_text = ""
-    for cnt_1 in range(3):
+    for cnt_1 in range(len(timetable_3)):
         result = timetable_3[cnt_1].xpath('text()')
         reply_text += str(result)
         reply_text += "\n"
