@@ -24,4 +24,20 @@ def get_url():
     reply_text = reply_text.join(text_1)
     return reply_text
         
+def get_teaser(movie_name):
+    url = 'https://www.youtube.com/results?search_query=' + movie_name
+    res = requests.get(url, verify=false)
+    r = etree.HTML(res.text)
+    r_1 = r.xpath('//a')
+    last = None
+    for entry in r_1:
+        m = re.search("v=(.*)", entry.attrib['href'])
+        if m:
+            target = m.group(1)
+            if target == last:
+                continue
+            if re.search("list", target):
+                continue
+            last = target
+            print target
     
