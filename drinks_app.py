@@ -30,10 +30,11 @@ def check_drinks(drink_name):
     drinks = worksheet.col_values(2)
     for drink_cnt in drinks:
         if drink_name in drinks[drink_cnt]:
+            print("exist")
             return drinks.index(drink_name)
-        else:
-            worksheet.append_row((json.dumps(datetime.datetime.now(), indent=4, sort_keys=True, default=str), user_id))
-            return -1
+    print("added")
+    worksheet.append_row((json.dumps(datetime.datetime.now(), indent=4, sort_keys=True, default=str), user_id))
+    return -1
             
 def random_drinks():
     GDriveJSON = 'FAMAX-ef61fdf82b20.json'
