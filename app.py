@@ -103,7 +103,7 @@ def handle_message(event):
     if "!潤娥" == event.message.text:
         imur_url = "https://imgur.com/8kbH05x"
         button_template_message =ButtonsTemplate(
-                            thumbnail_image_url="https://imgur.com/8kbH05x",
+                            thumbnail_image_url="https://reurl.cc/G42ed",
                             title='Menu', 
                             text='Please select',
                             ratio="1.51:1",
@@ -114,7 +114,7 @@ def handle_message(event):
 #                                 還回傳data中的資料，可
 #                                 此類透過 Postback event 處理。
                                 URITemplateAction(
-                                    label='uri可回傳網址', uri='https://imgur.com/8kbH05x'
+                                    label='uri可回傳網址', uri='https://reurl.cc/G42ed'
                                 )
                             ]
                         )
