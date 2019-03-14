@@ -27,7 +27,7 @@ def check_drinks(drink_name):
             print('無法連線Google試算表', ex)
             sys.exit(1)
         global drinks
-        drinks.users = worksheet.col_values(2)
+        drinks = worksheet.col_values(2)
         print(drinks)
         for drink_cnt in drinks:
             if drink_name in drinks[drink_cnt]:
