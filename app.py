@@ -136,7 +136,7 @@ def handle_message(event):
         else:
             reply_text = "你是第" + str(user_index) + "位註冊的使用者"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
-    if "!+飲料" == event.message.text:
+    if "!+飲料" in event.message.text:
         drink_name = event.message.text.split("-")
         drink_num = drinks_app.add_drinks(drink_name)
         if drink_num == "-1":
