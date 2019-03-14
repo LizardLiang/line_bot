@@ -28,7 +28,6 @@ def check_drinks(drink_name):
             sys.exit(1)
         global drinks
         drinks = worksheet.col_values(2)
-        print(drinks)
         for drink_cnt in drinks:
             if drink_name in drinks[drink_cnt]:
                 return drinks.index(drink_name)
