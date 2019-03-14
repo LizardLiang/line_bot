@@ -12,7 +12,7 @@ def get_url():
     text_1 = list()
     reply_text = ''
     for cnt in range(len(r_3)):
-        print("r_3", etree.tostring(r_3))
+        print("r_3", etree.tostring(r_3[cnt]))
         r_4 = r_3[cnt].xpath('a')
         print("r_4", etree.tostring(r_4))
         text = r_4[0].xpath('text()')
