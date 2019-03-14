@@ -103,7 +103,7 @@ def handle_message(event):
     if "!潤娥" == event.message.text:
         imur_url = "https://imgur.com/8kbH05x"
         button_template_message =ButtonsTemplate(
-                            thumbnail_image_url="https://i.imgur.com/eTldj2E.png?1",
+                            thumbnail_image_url="https://imgur.com/8kbH05x",
                             title='Menu', 
                             text='Please select',
                             ratio="1.51:1",
