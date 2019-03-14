@@ -17,6 +17,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials as SAC
 import user_id_app
 import drinks_app
+import movie_app
 
 app = Flask(__name__)
 
@@ -147,6 +148,9 @@ def handle_message(event):
     if "!抽飲料" == event.message.text:
         drink_name = drinks_app.random_drinks()
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=drink_name))
+    if "!上映中" == event.message.text:
+        reply_text = movie_app.get_url()
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
         
         
 
