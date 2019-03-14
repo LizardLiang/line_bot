@@ -40,6 +40,7 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    user_id = event.source.user_id
     message = TextSendMessage(text=event.message.text)
     #int_message = int(event.message.text) #to convert a string to a int
     if event.message.text == "健":
@@ -99,6 +100,25 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("爆了齁，再玩啊")))
     if "柏翰" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("汪汪汪")))
+    if "!潤娥" == event.message.text:
+        imur_url = https://imgur.com/8kbH05x
+        button_template_message =ButtonsTemplate(
+                            thumbnail_image_url="https://i.imgur.com/eTldj2E.png?1",
+                            title='Menu', 
+                            text='Please select',
+                            ratio="1.51:1",
+                            image_size="cover",
+                            actions=[
+#                                PostbackTemplateAction 點擊選項後，
+#                                 除了文字會顯示在聊天室中，
+#                                 還回傳data中的資料，可
+#                                 此類透過 Postback event 處理。
+                                URITemplateAction(
+                                    label='uri可回傳網址', uri='https://imgur.com/8kbH05x'
+                                )
+                            ]
+                        )
+        line_bot_api.reply_message(to,TemplateSendMessage(alt_text="Template Example", template=button_template_message))
         
         
 
