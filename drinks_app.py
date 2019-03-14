@@ -50,6 +50,6 @@ def random_drinks():
             sys.exit(1)
         global drinks
         drinks = worksheet.col_values(2)
-        max_index = len(dinks)
+        max_index = len(drinks)
         index = random.randint(0, max_index)
         return drinks[index]
