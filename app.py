@@ -125,7 +125,7 @@ def handle_message(event):
                             ]
                         )
         line_bot_api.reply_message(event.reply_token,TemplateSendMessage(alt_text="Template Example", template=button_template_message))
-    if "學弟" in evnet.message.text:
+    if "學弟" in event.message.text:
         reply_text = "@林志儒"
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text = reply_text))
         
