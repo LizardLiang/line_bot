@@ -5,6 +5,9 @@ import json
 from oauth2client.service_account import ServiceAccountCredentials
 users = list()
 
+#index   0    1
+#taget date  id
+
 def check_user(user_id):
     GDriveJSON = 'FAMAX-ef61fdf82b20.json'
     GSpreadSheet = 'line-bot'
