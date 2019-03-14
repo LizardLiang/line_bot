@@ -22,7 +22,7 @@ def check_drinks(drink_name):
             scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
             key = ServiceAccountCredentials.from_json_keyfile_name(GDriveJSON, scope)
             gc = gspread.authorize(key)
-            worksheet = gc.open(GSpreadSheet).worksheet(1833798373)
+            worksheet = gc.open(GSpreadSheet).get_worksheet(1833798373)
         except Exception as ex:
             print('無法連線Google試算表', ex)
             sys.exit(1)
