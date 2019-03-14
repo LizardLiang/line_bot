@@ -20,9 +20,9 @@ def get_url():
         text_url = etree.tostring(r_4[0])
         text = r_4[0].xpath('text()')
         text_1 += text
-        text_1.append(": ")
+        text_1.append(str(": "))
         text_1 += text_url 
-        text_1.append("\n")
+        text_1.append(str("\n"))
     reply_text = reply_text.join(text_1)
     return reply_text
         
