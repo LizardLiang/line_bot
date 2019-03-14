@@ -118,7 +118,7 @@ def handle_message(event):
                                 )
                             ]
                         )
-        line_bot_api.reply_message(to,TemplateSendMessage(alt_text="Template Example", template=button_template_message))
+        line_bot_api.reply_message(event.reply_token,TemplateSendMessage(alt_text="Template Example", template=button_template_message))
         
         
 
