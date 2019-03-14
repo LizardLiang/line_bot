@@ -24,5 +24,5 @@ def check_user(user_id):
             return users.index(user_id)
         else:
             users.append(user_id)
-            worksheet.append_row((datetime.datetime.now(), user_id))
+            worksheet.append_row((json.dumps(datetime.datetime.now(), cls=DateEncoder), user_id))
     
