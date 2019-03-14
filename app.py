@@ -130,6 +130,11 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TemplateSendMessage(alt_text="Template Example", template=button_template_message))
     if "!註冊" == event.message.text:
         user_index = user_id_app.check_user(user_id)
+        if user_index == -1:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("註冊成功")))
+        else:
+            reply_text = "你是第" + str(user_index) "位註冊的使用者"
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
         
         
 
