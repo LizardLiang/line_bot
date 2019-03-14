@@ -153,7 +153,9 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
     if "!預告" in event.message.text:
         movie_name = event.message.text.split('-')
-        movie_app.get_teaser(movie_name[1])
+        teaser_url = movie_app.get_teaser(movie_name[1])
+        reply_text = 'https://www.youtube.com/watch?v=' + teaser_url
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
         
         
 
