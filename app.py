@@ -143,6 +143,9 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("新增成功")))
         elif drink_num == "0":
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("已存在的飲料")))
+    if "!抽飲料" == event.message.text:
+        drink_name = drinks_app.random_drinks()
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=drink_name))
         
         
 
