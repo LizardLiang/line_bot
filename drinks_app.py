@@ -29,7 +29,7 @@ def check_drinks(drink_name, user_id):
     global drinks
     drinks = worksheet.col_values(2)
     for drink_cnt in drinks:
-        if drink_name == drinl_cnt:
+        if drink_name == drink_cnt:
             print("exist")
             return drinks.index(drink_name)
     print("added")
