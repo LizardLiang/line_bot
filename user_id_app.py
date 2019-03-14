@@ -8,7 +8,7 @@ def check_user(user_id):
     GSpreadSheet = 'line-bot'
     while True:
         try:
-            scope = ['https://spreadsheets.google.com/feeds']
+            scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
             key = SAC.from_json_keyfile_name(GDriveJSON, scope)
             gc = gspread.authorize(key)
             worksheet = gc.open(GSpreadSheet).sheet1
