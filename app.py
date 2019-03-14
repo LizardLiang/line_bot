@@ -15,7 +15,7 @@ import random
 import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials as SAC
-from user_id_app import users
+import user_id_app
 
 app = Flask(__name__)
 
@@ -129,7 +129,7 @@ def handle_message(event):
                         )
         line_bot_api.reply_message(event.reply_token,TemplateSendMessage(alt_text="Template Example", template=button_template_message))
     if "!註冊" == event.message.text:
-        user_index = users.check_user(user_id)
+        user_index = user_id_app.check_user(user_id)
         
         
 
