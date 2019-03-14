@@ -101,7 +101,7 @@ def handle_message(event):
     if "柏翰" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("汪汪汪")))
     if "!潤娥" == event.message.text:
-        imur_url = https://imgur.com/8kbH05x
+        imur_url = "https://imgur.com/8kbH05x"
         button_template_message =ButtonsTemplate(
                             thumbnail_image_url="https://i.imgur.com/eTldj2E.png?1",
                             title='Menu', 
