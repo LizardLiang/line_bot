@@ -133,7 +133,7 @@ def handle_message(event):
         if user_index == -1:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("註冊成功")))
         else:
-            reply_text = "你是第" + str(user_index) "位註冊的使用者"
+            reply_text = "你是第" + str(user_index) + "位註冊的使用者"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
         
         
