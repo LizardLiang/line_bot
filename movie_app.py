@@ -4,6 +4,7 @@ import requests
 
 def get_url():
     r = requests.get('http://www.atmovies.com.tw/movie/now/')
+    r.encoding = 'big-5'
     r_1 = etree.HTML(r.text)
     r_2 = r_1.xpath('//ul[@class=\"filmListAll2\"]')
     print("r_2", etree.tostring(r_2[0]))
