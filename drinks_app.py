@@ -7,6 +7,7 @@ drinks = list()
 
 def add_drinks(drink_name):
     d_index = check_drinks(drink_name)
+    print(drink_name)
     if d_index == -1:
         return -1
     else:
@@ -27,8 +28,10 @@ def check_drinks(drink_name):
             sys.exit(1)
         global drinks
         drinks.users = worksheet.col_values(2)
-        if drink_name in drinks:
-            return drinks.index(drink_name)
-        else:
-            worksheet.append_row((json.dumps(datetime.datetime.now(), indent=4, sort_keys=True, default=str), user_id))
-            return -1
+        print(drinks)
+        for drink_cnt in drinks:
+            if drink_name in drinks[drink_cnt]:
+                return drinks.index(drink_name)
+            else:
+                worksheet.append_row((json.dumps(datetime.datetime.now(), indent=4, sort_keys=True, default=str), user_id))
+                return -1
