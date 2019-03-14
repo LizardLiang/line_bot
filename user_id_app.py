@@ -22,10 +22,10 @@ def check_user(user_id):
         print('複製已存在的users' ,GSpreadSheet)
         if user_id in users:
             print("已存在使用者")
-            return -1
+            return users.index(user_id)
         else:
             users.append(user_id)
             worksheet.append_row((json.dumps(datetime.datetime.now(), indent=4, sort_keys=True, default=str), user_id))
             print("已新增使用者")
-            return users.index(user_id)
+            return -1
     
