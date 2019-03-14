@@ -6,7 +6,7 @@ def get_url():
     r = requests.get('http://www.atmovies.com.tw/movie/now/')
     r_1 = etree.HTML(r.text)
     r_2 = r_1.xpath('//ul[@class=\"filmListAll2\"]')
-    r_3 = r_2[0].xpath('li')
+    r_3 = r_2[1].xpath('li')
     text = ''
     text_1 = list()
     reply_text = ''
