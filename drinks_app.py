@@ -8,7 +8,7 @@ drinks = list()
 
 def add_drinks(drink_name, user_id):
     d_index = check_drinks(drink_name, user_id)
-    print(drink_name)
+    print("d_index", d_index)
     if d_index == -1:
         return -1
     else:
@@ -29,7 +29,7 @@ def check_drinks(drink_name, user_id):
     global drinks
     drinks = worksheet.col_values(2)
     for drink_cnt in drinks:
-        if drink_name in drinks[drink_cnt]:
+        if drink_name == drinl_cnt:
             print("exist")
             return drinks.index(drink_name)
     print("added")

@@ -139,6 +139,7 @@ def handle_message(event):
     if "!+飲料" in event.message.text:
         drink_name = event.message.text.split("-")
         drink_num = drinks_app.add_drinks(drink_name[1], user_id)
+        print("drink_num", drink_num)
         if drink_num == "-1":
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("新增成功")))
         elif drink_num == "0":
