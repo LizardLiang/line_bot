@@ -16,6 +16,7 @@ import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials as SAC
 import user_id_app
+import drinks_app
 
 app = Flask(__name__)
 
@@ -135,6 +136,13 @@ def handle_message(event):
         else:
             reply_text = "你是第" + str(user_index) + "位註冊的使用者"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
+    if "!+飲料" == event.message.text:
+        drink_name = event.message.text.split("-")
+        drink_num = drinks_app.add_drinks(drink_name)
+        if drink_num == "-1":
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("新增成功")))
+        elif drink_num == "0":
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("已存在的飲料")))
         
         
 
