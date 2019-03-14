@@ -9,6 +9,7 @@ def get_url():
     r_3 = r_2[0].xpath('li')
     text = ''
     text_1 = list()
+    reply_text = ''
     for cnt in range(len(r_3)):
         r_4 = r_3[cnt].xpath('a')
         text = r_4[0].xpath('text()')
