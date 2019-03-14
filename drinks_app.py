@@ -6,8 +6,8 @@ import random
 from oauth2client.service_account import ServiceAccountCredentials
 drinks = list()
 
-def add_drinks(drink_name):
-    d_index = check_drinks(drink_name)
+def add_drinks(drink_name, user_id):
+    d_index = check_drinks(drink_name, user_id)
     print(drink_name)
     if d_index == -1:
         return -1
