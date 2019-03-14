@@ -71,7 +71,7 @@ def handle_message(event):
     if "!擲骰子" == event.message.text:
         if user_id == "U58e43cf60b31e2ed4a101db4cab57fa6":
             num = '6'
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=text_num))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=num))
         else:
             num = random.randint(1,6)
             text_num = "擲到的點數是: "
