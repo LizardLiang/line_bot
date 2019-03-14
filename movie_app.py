@@ -1,6 +1,6 @@
 from lxml import etree
 
-import requests
+import requests, re
 
 def get_url():
     r = requests.get('http://www.atmovies.com.tw/movie/now/')
