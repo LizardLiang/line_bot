@@ -11,8 +11,11 @@ from linebot.models import *
 from lxml import etree
 
 import requests
-
 import random
+import datetime
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials as SAC
+from user_id import users
 
 app = Flask(__name__)
 
@@ -125,6 +128,8 @@ def handle_message(event):
                             ]
                         )
         line_bot_api.reply_message(event.reply_token,TemplateSendMessage(alt_text="Template Example", template=button_template_message))
+    if "!註冊" == event.message.text:
+        user_index = users.check_user(user_id)
         
         
 
@@ -183,6 +188,25 @@ def buy_ticket(date):
         r_1 += '&date=' + str(date[1]) + '/' + str(date[2]) + '/' + str(date[3])
     return r_1
 
+def add_to_spread():
+    GDriveJSON = 'FAMAX-ef61fdf82b20.json'
+    GSpreadSheet = 'line-bot'
+    while True:
+        try:
+            scope = ['https://spreadsheets.google.com/feeds']
+            key = SAC.from_json_keyfile_name(GDriveJSON, scope)
+            gc = gspread.authorize(key)
+            worksheet = gc.open(GSpreadSheet).sheet1
+        except Exception as ex:
+            print('無法連線Google試算表', ex)
+            sys.exit(1)
+        textt=""
+        textt+=event.message.text
+        if textt!="":
+            worksheet.append_row((datetime.datetime.now(), textt))
+            print('新增一列資料到試算表' ,GSpreadSheet)
+            return textt
+        
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
