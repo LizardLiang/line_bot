@@ -25,7 +25,7 @@ def get_url():
     return reply_text
         
 def get_teaser(movie_name):
-    url = 'https://www.youtube.com/results?search_query=' + movie_name + '預告'
+    url = 'https://www.youtube.com/user/truemovie1/search?query=' + movie_name
     res = requests.get(url, verify=False)
     r = etree.HTML(res.text)
     r_1 = r.xpath('//a')
