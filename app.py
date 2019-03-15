@@ -170,7 +170,7 @@ def handle_message(event):
         elif porn_status == 'exist':
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '老司機翻車拉~~'))
     if '!抽番號' == event.message.text:
-        time_now = datetime.datetime.time()
+        time_now = datetime.datetime.now()
         midnight = now.replace(hour=6, minute=0, second=0, microsecond=0)
         print(time_now)
         if time_now > midnight:
