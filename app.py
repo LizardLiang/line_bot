@@ -166,8 +166,15 @@ def handle_message(event):
         else:
             reply_text = 'https://www.youtube.com/watch?v=' + teaser_url
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
-        
-        
+    if '!+番號' in event.message.text:
+        porn_url = event.message.text.split('-')
+        if len(movie_name) < 2 or movie_name[1] == '':
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '林志儒吃屎'))
+        porn_status = porn_app.add_porn(porn_url[1])
+        if porn_status == 'success':
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '感謝老司機的帶路'))
+        elif porn_status == 'exist':
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '老司機翻車拉~~'))
 
         
 @handler.add(JoinEvent)    
