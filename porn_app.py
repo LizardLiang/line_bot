@@ -19,9 +19,10 @@ def load_porn():
         sys.exit(1)
     global porns
     porns = worksheet.col_values(1)
+    return worksheet
             
 def add_porn(porn_url):
-    load_porn()
+    worksheet = load_porn()
     if porn_url in porns:
         return "exist"
     else:
