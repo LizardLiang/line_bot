@@ -16,7 +16,7 @@ while True:
             scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
             key = ServiceAccountCredentials.from_json_keyfile_name(GDriveJSON, scope)
             gc = gspread.authorize(key)
-            worksheet = gc.open(GSpreadSheet).worksheet("工作表2")
+            worksheet = gc.open(GSpreadSheet).worksheet("工作表2") -> 填入工作表的名稱 就可以打開該工作表
         except Exception as ex:
             print('無法連線Google試算表', ex)
             sys.exit(1)
