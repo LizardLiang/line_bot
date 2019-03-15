@@ -18,7 +18,8 @@ def load_porn():
         print('無法連線Google試算表', ex)
         sys.exit(1)
     global porns
-    porns = worksheet.col_values(1)
+    porns = worksheet.col_values(2)
+    print("porns", porns)
     return worksheet
             
 def add_porn(porn_url):
@@ -27,7 +28,7 @@ def add_porn(porn_url):
         return "exist"
     else:
         porns.append(porn_url)
-        worksheet.append_row((porn_url))
+        worksheet.append_row((json.dumps(datetime.datetime.now(), indent=4, sort_keys=True, default=str), porn_url))
         print('已新增url')
         return 'success'
     
