@@ -43,6 +43,5 @@ def get_teaser(movie_name):
             last = target
             print("target", target)
             return target
-        elif not m:
-            return "failed"
+    return "failed"
     
