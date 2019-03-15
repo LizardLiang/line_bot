@@ -29,6 +29,7 @@ def get_teaser(movie_name):
     res = requests.get(url, verify=False)
     r = etree.HTML(res.text)
     r_1 = r.xpath('//a')
+    print("len(r_1)", len(r_1))
     last = None
     for entry in r_1:
         m = re.search("v=(.*)", entry.attrib['href'])
