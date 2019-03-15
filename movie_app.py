@@ -39,5 +39,6 @@ def get_teaser(movie_name):
             if re.search("list", target):
                 continue
             last = target
+            print target
             return target
     
