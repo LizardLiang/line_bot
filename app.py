@@ -169,6 +169,10 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '感謝老司機的帶路'))
         elif porn_status == 'exist':
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '老司機翻車拉~~'))
+    if '!抽番號' == event.message.text:
+        porn_url = porn_app.row_porn()
+        reply_text = '老司機帶你上路: ' + porn_url
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text)
 
         
 @handler.add(JoinEvent)    
