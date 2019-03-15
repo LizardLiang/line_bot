@@ -155,7 +155,7 @@ def handle_message(event):
         movie_name = event.message.text.split('-')
         teaser_url = movie_app.get_teaser(movie_name[1])
         if teaser_url == "failed":
-            reply_text = 'Your movie: ' + movie_name + 'cannot be found' 
+            reply_text = 'Your movie: ' + movie_name[1] + 'cannot be found' 
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
         else:
             reply_text = 'https://www.youtube.com/watch?v=' + teaser_url
