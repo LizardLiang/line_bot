@@ -172,7 +172,7 @@ def handle_message(event):
     if '!抽番號' == event.message.text:
         porn_url = porn_app.row_porn()
         reply_text = '老司機帶你上路: ' + porn_url
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
 
         
 @handler.add(JoinEvent)    
