@@ -171,7 +171,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '老司機翻車拉~~'))
     if '!抽番號' == event.message.text:
         time_now = datetime.datetime.now()
-        midnight = now.replace(hour=6, minute=0, second=0, microsecond=0)
+        midnight = time_now.replace(hour=6, minute=0, second=0, microsecond=0)
         print(time_now)
         if time_now > midnight:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '現在開車還太早拉~~~'))
