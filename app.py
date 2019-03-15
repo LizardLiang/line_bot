@@ -175,9 +175,10 @@ def handle_message(event):
         print(time_now)
         if time_now > midnight:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '現在開車還太早拉~~~'))
-        porn_url = porn_app.row_porn()
-        reply_text = '老司機帶你上路: ' + porn_url
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
+        else:
+            porn_url = porn_app.row_porn()
+            reply_text = '老司機帶你上路: ' + porn_url
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
 
         
 @handler.add(JoinEvent)    
