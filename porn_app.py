@@ -34,5 +34,5 @@ def add_porn(porn_url):
     
 def row_porn():
     load_porn()
-    index = random.randint(0, len(porns))
+    index = random.randint(0, len(porns) - 1)
     return porns[index]
