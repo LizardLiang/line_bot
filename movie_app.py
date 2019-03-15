@@ -33,6 +33,7 @@ def get_teaser(movie_name):
     last = None
     for entry in r_1:
         m = re.search("v=(.*)", entry.attrib['href'])
+        print("m", m)
         if m:
             target = m.group(1)
             if target == last:
