@@ -27,7 +27,7 @@ def add_porn(porn_url):
         return "exist"
     else:
         porns.append(porn_url)
-        worksheet.append_row((user_id))
+        worksheet.append_row((porn_url))
         print('已新增url')
         return 'success'
     
