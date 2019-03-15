@@ -15,7 +15,13 @@ import random
 import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials as SAC
+<<<<<<< HEAD
 import user_id_app, drinks_app, porn_app
+=======
+import user_id_app
+import drinks_app
+import movie_app
+>>>>>>> b2f2ca49b044553b3f5bd9777dfe43ad9907dae5
 
 app = Flask(__name__)
 
@@ -146,6 +152,20 @@ def handle_message(event):
     if "!抽飲料" == event.message.text:
         drink_name = drinks_app.random_drinks()
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=drink_name))
+    if "!上映中" == event.message.text:
+        reply_text = movie_app.get_url()
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
+    if "!預告" in event.message.text:
+        movie_name = event.message.text.split('-')
+        if len(movie_name) < 2 or movie_name[1] == '':
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '林志儒吃屎'))
+        teaser_url = movie_app.get_teaser(movie_name[1])
+        if teaser_url == "failed":
+            reply_text = 'Your movie: ' + movie_name[1] + ' cannot be found' 
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
+        else:
+            reply_text = 'https://www.youtube.com/watch?v=' + teaser_url
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
         
         
 
