@@ -109,25 +109,6 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("爆了齁，再玩啊")))
     if "柏翰" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("汪汪汪")))
-    if "!麥當勞" == event.message.text:
-        imur_url = "https://imgur.com/8kbH05x"
-        button_template_message =ButtonsTemplate(
-                            thumbnail_image_url="https://www.mcdelivery.com.tw/tw/home.html",
-                            title='Menu', 
-                            text='Please select',
-                            ratio="1.51:1",
-                            image_size="cover",
-                            actions=[
-#                                PostbackTemplateAction 點擊選項後，
-#                                 除了文字會顯示在聊天室中，
-#                                 還回傳data中的資料，可
-#                                 此類透過 Postback event 處理。
-                                URITemplateAction(
-                                    label='uri可回傳網址', uri='https://www.mcdelivery.com.tw/tw/home.html'
-                                )
-                            ]
-                        )
-        line_bot_api.reply_message(event.reply_token,TemplateSendMessage(alt_text="Template Example", template=button_template_message))
     if "!註冊" == event.message.text:
         user_index = user_id_app.check_user(user_id)
         if user_index == -1:
@@ -170,15 +151,9 @@ def handle_message(event):
         elif porn_status == 'exist':
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '老司機翻車拉~~'))
     if '!抽番號' == event.message.text:
-        time_now = datetime.datetime.now()
-        midnight = time_now.replace(hour=6, minute=0, second=0, microsecond=0)
-        print(time_now)
-        if time_now > midnight:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '現在開車還太早拉~~~'))
-        else:
-            porn_url = porn_app.row_porn()
-            reply_text = '老司機帶你上路: ' + porn_url
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
+        porn_url = porn_app.row_porn()
+        reply_text = '老司機帶你上路: ' + porn_url
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
 
         
 @handler.add(JoinEvent)    
