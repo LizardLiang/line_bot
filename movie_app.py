@@ -65,6 +65,7 @@ def movie_sep(_id, string1):
         timetable = timetable_text.xpath('//a[@href=\"/showtime/' + loc_url + '/\"]')
     reply_text = ""
     result_1 = list()
+    print('timetable', len(timetable))
     for cnt in range(len(timetable)):
         timetable_1 = timetable[cnt].getparent() 
         timetable_2 = timetable_1.getparent() #電影時刻的父標籤
