@@ -66,6 +66,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
     if _index == '2':
         movie_app.set_location(user_id, event.message.text)
+        user_proccess.clear_status(user_id)
     if "慈孤觀音" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("輕者當日，重者七日\n你要對慈孤觀音有信心")))
     if "!訂票" in event.message.text:
