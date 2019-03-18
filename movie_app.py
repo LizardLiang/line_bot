@@ -84,6 +84,8 @@ def find_movie(_id, name):
     print('t_m: ', t_m)
     if len(t_m) != 0:
         loc_url = theater_app.find_theater(t_m[1])
+        if loc_url == '-1':
+            return '-1'
     else:
         loc_url = user_proccess.read_theater(_id)
     print('loc_url', loc_url)
@@ -116,4 +118,7 @@ def set_location(_id, keyword):
     if _url != '-1':
         user_proccess.set_theater(_id, _url)
         print('set_location success')
+        return 'set_location success'
+    else:
+        return '-1'
             
