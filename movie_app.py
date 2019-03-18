@@ -104,7 +104,7 @@ def find_movie(_id, name):
             t_3 = t_2.split('/')
             return t_3[2] + ' ' + loc_url #有找到的話，回傳網址
         else:
-            t_2 = "find nothing" #沒找到的話，回傳nothing
+            t_2 = 'find nothing' #沒找到的話，回傳nothing
     return t_2
 
 def buy_ticket(date):

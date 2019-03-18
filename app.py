@@ -62,8 +62,8 @@ def handle_message(event):
     if _index == '1':
         user_proccess.clear_status(user_id)
         cut_1 = movie_app.find_movie(user_id, event.message.text) #去尋找電影
-        if "find nothing" in cut_1:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('無此電影場次')))
+        if 'find nothing' in cut_1:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('找不到您的電影，或是影院')))
         else:
             reply_text = movie_app.movie_sep(user_id, cut_1) #找到電影後，去找時刻
             if reply_text == '-1':
