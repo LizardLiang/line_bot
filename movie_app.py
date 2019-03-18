@@ -86,8 +86,10 @@ def find_movie(_id, name):
         loc_url = theater_app.find_theater(t_m[1])
         if loc_url == '-1':
             loc_url = theater_app.find_theater(t_m[0])
+            t_m_1 = t_m[1]
             if loc_url == '-1':
                 return 'find nothing'
+        t_m_1 = t_m[0]
     else:
         loc_url = user_proccess.read_theater(_id)
     print('loc_url', loc_url)
@@ -101,7 +103,7 @@ def find_movie(_id, name):
     for cnt in range(len(r_3)):
         r_4 = r_3[cnt].xpath('a')
         t_1 = r_4[0].xpath('text()') 
-        if t_m[0] in t_1: #比較電影名稱
+        if t_m_1 in t_1: #比較電影名稱
             t_2 = r_4[0].attrib['href']
             t_3 = t_2.split('/')
             return t_3[2] + ' ' + loc_url #有找到的話，回傳網址
