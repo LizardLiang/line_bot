@@ -15,7 +15,7 @@ import random
 import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials as SAC
-import user_id_app, drinks_app, porn_app, movie_app, user_proccess
+import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app
 
 app = Flask(__name__)
 
