@@ -93,6 +93,7 @@ def find_movie(_id, name):
             t_m_1 = t_m[0]
     else:
         loc_url = user_proccess.read_theater(_id)
+        t_m_1 = t_m[0]
     print('loc_url', loc_url)
     if loc_url == None:
         r_1 = requests.get('http://www.atmovies.com.tw/showtime/t02e13/a02/') #讀取樹林秀泰的網頁
