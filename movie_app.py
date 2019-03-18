@@ -108,6 +108,7 @@ def find_movie(_id, name):
         if t_m_1 in t_1: #比較電影名稱
             t_2 = r_4[0].attrib['href']
             t_3 = t_2.split('/')
+            print('t_3', t_3)
             return t_3[2] + ' ' + loc_url #有找到的話，回傳網址
         else:
             t_2 = 'find nothing' #沒找到的話，回傳nothing
