@@ -50,12 +50,15 @@ def handle_message(event):
     #int_message = int(event.message.text) #to convert a string to a int
     if event.message.text == "健":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
+        
     if "!movie" == event.message.text:
         user_proccess.set_status(user_id, 1)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('請輸入要搜尋的電影')))
+        
     if '!設地區' == event.message.text:
         user_proccess.set_status(user_id, 2)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('請輸入要搜尋的地區')))
+        
     if _index == '1':
         cut_1 = movie_app.find_movie(event.message.text) #去尋找電影
         user_proccess.clear_status(user_id)
@@ -64,11 +67,14 @@ def handle_message(event):
         else:
             reply_text = movie_app.movie_sep(cut_1) #找到電影後，去找時刻
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
+            
     if _index == '2':
-        movie_app.set_location(user_id, event.message.text)
+        movie_app.set_theater(user_id, event.message.text)
         user_proccess.clear_status(user_id)
+        
     if "慈孤觀音" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("輕者當日，重者七日\n你要對慈孤觀音有信心")))
+        
     if "!訂票" in event.message.text:
         try:
             date = event.message.text.split('-')
@@ -82,6 +88,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("尚無此日期場次")))
         else :
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=b_url))
+            
     if "!擲骰子" == event.message.text:
         if user_id == "U58e43cf60b31e2ed4a101db4cab57fa6":
             num = '6'
@@ -93,6 +100,7 @@ def handle_message(event):
             text_num = "擲到的點數是: "
             text_num += str(num)
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=text_num))
+            
     if "!十八拉" == event.message.text or "!十八啦" == event.message.text:
         num = random.randint(1,6)
         num_1 = random.randint(1,6)
@@ -101,11 +109,13 @@ def handle_message(event):
         text_num = "擲到的點數是: "
         text_num = text_num + str(num) + '、' + str(num_1) + '、' + str(num_2) + '、' + str(num_3)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=text_num))
+        
     if "!終極密碼" == event.message.text:
         global game_key
         game_key = random.randint(1,1000)
         print(game_key)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("終極密碼已佈署完成")))
+        
     if "!猜" in event.message.text:
         game_num = event.message.text.split("-")
         if int(game_num[1]) > game_key:
@@ -118,8 +128,10 @@ def handle_message(event):
             print(game_key)
             game_key = random.randint(1,1000)
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("爆了齁，再玩啊")))
+            
     if "柏翰" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("汪汪汪")))
+        
     if "!註冊" == event.message.text:
         user_index = user_id_app.check_user(user_id)
         if user_index == -1:
@@ -127,6 +139,7 @@ def handle_message(event):
         else:
             reply_text = "你是第" + str(user_index) + "位註冊的使用者"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
+            
     if "!+飲料" in event.message.text:
         drink_name = event.message.text.split("-")
         drink_num = drinks_app.add_drinks(drink_name[1], user_id)
@@ -135,12 +148,15 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("新增成功")))
         elif drink_num == 0:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("已存在的飲料")))
+            
     if "!抽飲料" == event.message.text:
         drink_name = drinks_app.random_drinks()
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=drink_name))
+        
     if "!上映中" == event.message.text:
         reply_text = movie_app.get_url()
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
+        
     if "!預告" in event.message.text:
         movie_name = event.message.text.split('-')
         if len(movie_name) < 2 or movie_name[1] == '':
