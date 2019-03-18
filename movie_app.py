@@ -71,7 +71,7 @@ def movie_sep(_id, string1):
         timetable_3 = timetable_2.xpath('li') #找到時刻的標籤
         for cnt_1 in range(len(timetable_3)):
             result = timetable_3[cnt_1].xpath('text()') #轉為 string -> 但是不知道為啥是 list
-            print(result)
+            print('result: ', result)
             if len(result) != 0 and ' \r\n\t\t\t\t\t\t\t\t' not in result: #去掉空白的跟巨幕廳下面的換行符
                 result_1 += result #把 list 合起來
                 result_1 += "\n"
