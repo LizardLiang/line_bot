@@ -46,6 +46,7 @@ def handle_message(event):
     user_id = event.source.user_id
     message = TextSendMessage(text=event.message.text)
     _index = user_proccess.check_status(user_id)
+    print(_index)
     #int_message = int(event.message.text) #to convert a string to a int
     if event.message.text == "健":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))

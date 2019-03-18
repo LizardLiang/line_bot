@@ -47,7 +47,7 @@ def set_status(_id, status):
     worksheet = connect_to_spread()
     _index = user_index(_id)
     user_status[_index] = 1
-    worksheet.update_cell(2, _index+1, str(status))
+    worksheet.update_cell(_index+1, 2, str(status))
     return 'set ' + _id + 'to search'
 
 def clear_status(_id):
