@@ -87,3 +87,23 @@ def buy_ticket(date):
     if date != 0 :
         r_1 += '&date=' + str(date[1]) + '/' + str(date[2]) + '/' + str(date[3])
     return r_1
+
+def set_location(_id, keyword):
+    r_1 = request.get('http://www.atmovies.com.tw/showtime/a02/')
+    r_2 = etree.HTML(r_1.text)
+    r_3 = r_2.xpath('//a')
+    t_1 = ''
+    t_2 = ''
+    t_3 = ''
+    if len(r_3) != 0:
+        for r_4 in r_3:
+            print(r_4.xpath('text()'))
+            if keyword in r_4.xpath('text()'):
+                t_1 = r_4[0].attrib['href']
+                t_2 = t_1.split('/')
+                print(t_2[2])
+                t_3 += t_2[2] + '\n'
+    else:
+        return 0
+    print(t_3)
+            

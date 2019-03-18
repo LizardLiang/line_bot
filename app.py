@@ -50,9 +50,11 @@ def handle_message(event):
     #int_message = int(event.message.text) #to convert a string to a int
     if event.message.text == "健":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
-    if "!movie" in event.message.text:
+    if "!movie" == event.message.text:
         user_proccess.set_status(user_id, 1)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('請輸入要搜尋的電影')))
+    if '!設地區' == event.message.text:
+        user_proccess.set_status(user_id, 2)
     if _index == '1':
         cut_1 = movie_app.find_movie(event.message.text) #去尋找電影
         user_proccess.clear_status(user_id)
@@ -61,6 +63,8 @@ def handle_message(event):
         else:
             reply_text = movie_app.movie_sep(cut_1) #找到電影後，去找時刻
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
+    if _index == '2':
+        movie_app.set_location(user_id, event.message.text)
     if "慈孤觀音" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("輕者當日，重者七日\n你要對慈孤觀音有信心")))
     if "!訂票" in event.message.text:

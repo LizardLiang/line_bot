@@ -20,3 +20,8 @@ while True:
         except Exception as ex:
             print('無法連線Google試算表', ex)
             sys.exit(1)
+            
+            
+user_status:
+            0  -> normal
+            1  -> search movie time table
