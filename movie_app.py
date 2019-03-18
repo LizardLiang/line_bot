@@ -74,6 +74,7 @@ def find_movie(_id, name):
         r_1 = requests.get('http://www.atmovies.com.tw/showtime/t02e13/a02/') #讀取樹林秀泰的網頁
     else:
         r_1 = requests.get('http://www.atmovies.com.tw/showtime/' + loc_url + '/') #讀取樹林秀泰的網頁
+        print('111111')
     r_2 = etree.HTML(r_1.text)
     r_3 = r_2.xpath('//li[@class=\"filmTitle\"]') #讀出所有電影名稱
     for cnt in range(len(r_3)):
