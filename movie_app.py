@@ -82,7 +82,7 @@ def find_movie(_id, name):
     t_m = name.split(' ')
     loc_url = ''
     print('t_m: ', t_m)
-    if len(t_m) != 0:
+    if len(t_m) > 1:
         loc_url = theater_app.find_theater(t_m[1])
         if loc_url == '-1':
             loc_url = theater_app.find_theater(t_m[0])
