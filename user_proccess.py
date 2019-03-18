@@ -8,7 +8,7 @@ user_id = list()
 user_status = list()
 
 def connect_to_spread():
-    GDriveJSON = 'FAMAX-3647d846120a.json'
+    GDriveJSON = 'FAMAX-ef61fdf82b20.json'
     GSpreadSheet = 'line-bot'
     global worksheet
     while True:
