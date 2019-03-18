@@ -1,6 +1,6 @@
 from lxml import etree
 
-import requests, re
+import requests, re, user_proccess, theater_app
 
 def get_url():
     r = requests.get('http://www.atmovies.com.tw/movie/now/')
@@ -89,23 +89,8 @@ def buy_ticket(date):
     return r_1
 
 def set_location(_id, keyword):
-    r_1 = requests.get('http://www.atmovies.com.tw/showtime/a02/')
-    r_2 = etree.HTML(r_1.text)
-    r_3 = r_2.xpath('//a')
-    t_1 = ''
-    t_2 = ''
-    t_3 = ''
-    print('keyword: ', keyword)
-    if len(r_3) != 0:
-        for r_4 in r_3:
-            print('r_4: ', r_4.attrib['onmouseover'])
-            t = r_4.attrib['onmouseover']
-            if keyword in t:
-                t_1 = r_4.attrib['href']
-                t_2 = t_1.split('/')
-                print('t_2: ', t_2)
-                t_3 += t_2[2] + '\n'
-    else:
-        return 0
-    print('t_3: ', t_3)
+    _url = theater_app.find_theater(keyword)
+    if _url != '-1':
+        user_proccess(_id, _url)
+        print('set_location success')
             
