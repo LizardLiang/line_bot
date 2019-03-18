@@ -58,13 +58,13 @@ def clear_status(_id):
     return 'set ' + _id + 'to normal'
 
 def set_theater(_id, _url_k):
-    worksheet = connect_to_sheet()
+    worksheet = connect_to_spread()
     _index = user_index(_id)
     worksheet.update_cell(_index+1, 3, _url_k)
     print('set theater success')
     
 def read_theater(_id):
-    worksheet = connect_to_sheet()
+    worksheet = connect_to_spread()
     _index = user_index(_index)
     url_k_1 = worksheet.cell(_index+1, 3).value
     return url_k_1
