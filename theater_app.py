@@ -29,6 +29,6 @@ def find_theater(keyword):
     print(theaters)
     code = wks.col_values(2)
     for theater_t in theaters:
-        if keyword == theater_t:
+        if keyword in theater_t:
             return code[theaters.index(theater_t)]
     return '-1'
