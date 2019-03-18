@@ -101,7 +101,7 @@ def set_location(_id, keyword):
             if keyword in r_4.xpath('text()'):
                 t_1 = r_4[0].attrib['href']
                 t_2 = t_1.split('/')
-                print(t_2[2])
+                print('t_2: ', t_2)
                 t_3 += t_2[2] + '\n'
     else:
         return 0
