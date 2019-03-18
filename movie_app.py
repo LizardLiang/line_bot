@@ -85,7 +85,9 @@ def find_movie(_id, name):
     if len(t_m) != 0:
         loc_url = theater_app.find_theater(t_m[1])
         if loc_url == '-1':
-            return 'find nothing'
+            loc_url = theater_app.find_theater(t_m[0])
+            if loc_url == '-1':
+                return 'find nothing'
     else:
         loc_url = user_proccess.read_theater(_id)
     print('loc_url', loc_url)
