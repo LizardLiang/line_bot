@@ -45,3 +45,45 @@ def get_teaser(movie_name):
             return target
     return "failed"
     
+def movie_sep(string1):
+    timetable_urL = 'http://www.atmovies.com.tw/showtime/'
+    timetable_urL += string1 # -> 抓到的電影網址關鍵詞
+    timetable_urL += '/a02/'
+    timetable_url = requests.get(timetable_urL) #抓網站
+    timetable_text = etree.HTML(timetable_url.text) #把抓到的網站，用HTML的方式轉成文檔
+    timetable = timetable_text.xpath('//a[@href=\"/showtime/t02e13/a02/\"]') #透過這個去反推我要的電影時刻在哪裡
+    reply_text = ""
+    result_1 = list()
+    for cnt in range(len(timetable)):
+        timetable_1 = timetable[cnt].getparent() 
+        timetable_2 = timetable_1.getparent() #電影時刻的父標籤
+        timetable_3 = timetable_2.xpath('li') #找到時刻的標籤
+        for cnt_1 in range(len(timetable_3)):
+            result = timetable_3[cnt_1].xpath('text()') #轉為 string -> 但是不知道為啥是 list
+            print(result)
+            if len(result) != 0 and ' \r\n\t\t\t\t\t\t\t\t' not in result: #去掉空白的跟巨幕廳下面的換行符
+                result_1 += result #把 list 合起來
+                result_1 += "\n"
+    reply_text = reply_text.join(result_1) #把 list 加到 string 裡面
+    return reply_text
+
+def find_movie(name):
+    r_1 = requests.get('http://www.atmovies.com.tw/showtime/t02e13/a02/') #讀取樹林秀泰的網頁
+    r_2 = etree.HTML(r_1.text)
+    r_3 = r_2.xpath('//li[@class=\"filmTitle\"]') #讀出所有電影名稱
+    for cnt in range(len(r_3)):
+        r_4 = r_3[cnt].xpath('a')
+        t_1 = r_4[0].xpath('text()') 
+        if name in t_1: #比較電影名稱
+            t_2 = r_4[0].attrib['href']
+            t_3 = t_2.split('/')
+            return t_3[2] #有找到的話，回傳網址
+        else:
+            t_2 = "find nothing" #沒找到的話，回傳nothing
+    return t_2
+
+def buy_ticket(date):
+    r_1 = 'https://www.showtimes.com.tw/events?corpId=54'
+    if date != 0 :
+        r_1 += '&date=' + str(date[1]) + '/' + str(date[2]) + '/' + str(date[3])
+    return r_1
