@@ -46,12 +46,17 @@ def get_teaser(movie_name):
     return "failed"
     
 def movie_sep(string1):
+    loc_url = user_proccess.read_theater(_id)
+    print('loc_url', loc_url)
     timetable_urL = 'http://www.atmovies.com.tw/showtime/'
     timetable_urL += string1 # -> 抓到的電影網址關鍵詞
     timetable_urL += '/a02/'
     timetable_url = requests.get(timetable_urL) #抓網站
     timetable_text = etree.HTML(timetable_url.text) #把抓到的網站，用HTML的方式轉成文檔
-    timetable = timetable_text.xpath('//a[@href=\"/showtime/t02e13/a02/\"]') #透過這個去反推我要的電影時刻在哪裡
+    if loc_url == None:
+        timetable = timetable_text.xpath('//a[@href=\"/showtime/t02e13/a02/\"]') #透過這個去反推我要的電影時刻在哪裡
+    else:
+        timetable = timetable_text.xpath('//a[@href=\"/showtime/' + loc_url + '/\"]')
     reply_text = ""
     result_1 = list()
     for cnt in range(len(timetable)):
