@@ -53,7 +53,7 @@ def handle_message(event):
     if "!movie" in event.message.text:
         user_proccess.set_status(user_id, 1)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('請輸入要搜尋的電影')))
-    if _index == 1:
+    if _index == '1':
         cut_1 = movie_app.find_movie(event.message.text) #去尋找電影
         user_proccess.clear_status(user_id)
         if "find nothing" in cut_1:
