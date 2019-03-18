@@ -26,6 +26,7 @@ def connect_to_sheet():
 def find_theater(keyword):
     wks = connect_to_sheet()
     theaters = wks.col_values(1)
+    print(theaters)
     code = wks.col_values(2)
     for theater_t in theaters:
         if keyword == theater_t:
