@@ -66,5 +66,6 @@ def set_theater(_id, _url_k):
 def read_theater(_id):
     worksheet = connect_to_spread()
     _index = user_index(_id)
+    print('index: ', _index)
     url_k_1 = worksheet.cell(_index+1, 3).value
     return url_k_1
