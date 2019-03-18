@@ -74,7 +74,7 @@ def handle_message(event):
         
     if '!電影院' == event.message.text:
         reply_text = theater_app.list_theater()
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text)))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
         
     if "慈孤觀音" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("輕者當日，重者七日\n你要對慈孤觀音有信心")))
