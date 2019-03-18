@@ -100,7 +100,7 @@ def set_location(_id, keyword):
         for r_4 in r_3:
             print('r_4: ', r_4.xpath('text()'))
             t = r_4.xpath('text()')
-            t_4 = etree.tostring(t)
+            t_4 = etree.tostring(r_4)
             if keyword in t_4:
                 t_1 = r_4.attrib['href']
                 t_2 = t_1.split('/')
