@@ -7,7 +7,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 user_id = list()
 user_status = list()
 
-def connect_to_spread():
+def connect_to_sheet():
     GDriveJSON = 'FAMAX-ef61fdf82b20.json'
     GSpreadSheet = 'line-bot'
     global worksheet
