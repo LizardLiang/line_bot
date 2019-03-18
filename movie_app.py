@@ -54,9 +54,10 @@ def movie_sep(_id, string1):
     else:
         loc_url = t_m[1]
     print('loc_url', loc_url)
+    t_m_2 = loc_url.split('/')
     timetable_urL = 'http://www.atmovies.com.tw/showtime/'
     timetable_urL += t_m[0] # -> 抓到的電影網址關鍵詞
-    timetable_urL += '/a02/'
+    timetable_urL += '/' + t_m_2[1] + '/'
     timetable_url = requests.get(timetable_urL) #抓網站
     timetable_text = etree.HTML(timetable_url.text) #把抓到的網站，用HTML的方式轉成文檔
     if loc_url == None:
