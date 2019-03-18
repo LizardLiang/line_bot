@@ -49,10 +49,10 @@ def movie_sep(_id, string1):
     t_m = string1.split(' ')
     loc_url = ''
     print('t_m: ', t_m)
-    if len(t_m) != 0:
-        loc_url = theater_app.find_theater(t_m[1])
-    else:
+    if len(t_m) == 0:
         loc_url = user_proccess.read_theater(_id)
+    else:
+        loc_url = t_m[1]
     print('loc_url', loc_url)
     timetable_urL = 'http://www.atmovies.com.tw/showtime/'
     timetable_urL += t_m[0] # -> 抓到的電影網址關鍵詞
