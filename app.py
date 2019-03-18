@@ -60,7 +60,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('請輸入要搜尋的地區')))
         
     if _index == '1':
-        cut_1 = movie_app.find_movie(event.message.text) #去尋找電影
+        cut_1 = movie_app.find_movie(user_id, event.message.text) #去尋找電影
         user_proccess.clear_status(user_id)
         if "find nothing" in cut_1:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('無此電影場次')))

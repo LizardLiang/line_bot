@@ -67,7 +67,8 @@ def movie_sep(string1):
     reply_text = reply_text.join(result_1) #把 list 加到 string 裡面
     return reply_text
 
-def find_movie(name):
+def find_movie(_id, name):
+    loc_url = read_theater(_id)
     r_1 = requests.get('http://www.atmovies.com.tw/showtime/t02e13/a02/') #讀取樹林秀泰的網頁
     r_2 = etree.HTML(r_1.text)
     r_3 = r_2.xpath('//li[@class=\"filmTitle\"]') #讀出所有電影名稱
