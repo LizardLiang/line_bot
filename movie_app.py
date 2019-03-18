@@ -46,10 +46,17 @@ def get_teaser(movie_name):
     return "failed"
     
 def movie_sep(_id, string1):
+    t_m = string1.split(' ')
+    loc_url = ''
+    print('t_m: ', t_m)
+    if len(t_m) != 0:
+        loc_url = theater_app.find_theater(t_m[1])
+    else:
+        loc_url = user_proccess.read_theater(_id)
     loc_url = user_proccess.read_theater(_id)
     print('loc_url', loc_url)
     timetable_urL = 'http://www.atmovies.com.tw/showtime/'
-    timetable_urL += string1 # -> 抓到的電影網址關鍵詞
+    timetable_urL += t_m[0] # -> 抓到的電影網址關鍵詞
     timetable_urL += '/a02/'
     timetable_url = requests.get(timetable_urL) #抓網站
     timetable_text = etree.HTML(timetable_url.text) #把抓到的網站，用HTML的方式轉成文檔
@@ -94,7 +101,7 @@ def find_movie(_id, name):
         if t_m[0] in t_1: #比較電影名稱
             t_2 = r_4[0].attrib['href']
             t_3 = t_2.split('/')
-            return t_3[2] #有找到的話，回傳網址
+            return t_3[2] + ' ' + loc_url #有找到的話，回傳網址
         else:
             t_2 = "find nothing" #沒找到的話，回傳nothing
     return t_2
