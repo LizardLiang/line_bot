@@ -91,6 +91,6 @@ def buy_ticket(date):
 def set_location(_id, keyword):
     _url = theater_app.find_theater(keyword)
     if _url != '-1':
-        user_proccess.set_location(_id, _url)
+        user_proccess.set_theater(_id, _url)
         print('set_location success')
             
