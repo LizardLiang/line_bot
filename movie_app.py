@@ -98,8 +98,8 @@ def set_location(_id, keyword):
     print('keyword: ', keyword)
     if len(r_3) != 0:
         for r_4 in r_3:
-            print('r_4: ', r_4.xpath('text()'))
-            if keyword in r_4.xpath('text()'):
+            print('r_4: ', r_4[0].xpath('text()'))
+            if keyword in r_4[0].xpath('text()'):
                 t_1 = r_4[0].attrib['href']
                 t_2 = t_1.split('/')
                 print('t_2: ', t_2)
