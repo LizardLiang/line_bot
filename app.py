@@ -65,7 +65,7 @@ def handle_message(event):
         if "find nothing" in cut_1:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('無此電影場次')))
         else:
-            reply_text = movie_app.movie_sep(cut_1) #找到電影後，去找時刻
+            reply_text = movie_app.movie_sep(user_id, cut_1) #找到電影後，去找時刻
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
             
     if _index == '2':

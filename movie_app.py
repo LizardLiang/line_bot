@@ -45,7 +45,7 @@ def get_teaser(movie_name):
             return target
     return "failed"
     
-def movie_sep(string1):
+def movie_sep(_id, string1):
     loc_url = user_proccess.read_theater(_id)
     print('loc_url', loc_url)
     timetable_urL = 'http://www.atmovies.com.tw/showtime/'
