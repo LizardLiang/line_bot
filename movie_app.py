@@ -95,6 +95,7 @@ def set_location(_id, keyword):
     t_1 = ''
     t_2 = ''
     t_3 = ''
+    print('keyword: ', keyword)
     if len(r_3) != 0:
         for r_4 in r_3:
             print('r_4: ', r_4.xpath('text()'))
