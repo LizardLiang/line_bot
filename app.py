@@ -15,7 +15,7 @@ import random
 import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials as SAC
-import user_id_app, drinks_app, porn_app, movie_app
+import user_id_app, drinks_app, porn_app, movie_app, user_proccess
 
 app = Flask(__name__)
 
@@ -45,12 +45,16 @@ def callback():
 def handle_message(event):
     user_id = event.source.user_id
     message = TextSendMessage(text=event.message.text)
+    _index = user_proccess.check_status(user_id)
     #int_message = int(event.message.text) #to convert a string to a int
     if event.message.text == "健":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
-    if "!movie-" in event.message.text:
-        cut = event.message.text.split('-') #拆出指令與電影名稱
-        cut_1 = movie_app.find_movie(cut[1]) #去尋找電影
+    if "!movie" in event.message.text:
+        user_proccess.set_status(user_id, 1)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('請輸入要搜尋的電影')))
+    if _index == 1:
+        cut_1 = movie_app.find_movie(event.message.text) #去尋找電影
+        user_proccess.clear_status(user_id)
         if "find nothing" in cut_1:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('無此電影場次')))
         else:
