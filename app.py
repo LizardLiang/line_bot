@@ -208,7 +208,10 @@ def handle_message(event):
                         message = message + "\n---------------------------------"
                         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=(message)))
                         break
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=(message)))                
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=(message)))   
+    elif '!2020總統大選' in event.meesage.text:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=('票投國民黨\n韓導三民主義統一中國')))   
+
 
 def train(string_1):
     URL = "https://tw.piliapp.com/%E5%8F%B0%E9%90%B5%E7%81%AB%E8%BB%8A%E6%99%82%E5%88%BB%E8%A1%A8/?q="
