@@ -7,7 +7,7 @@ def find_bus(bus_name):
     r_2 = r_1.xpath('//a')
     for r_3 in r_2:
         t = r_3.xpath('text()')
-        t1 = etree.tostring(r_3)
+        t1 = etree.tostring(r_3, pretty_print=True)
         print('t:', t1)
         if bus_name in t1:
             r_4 = r_3.attrib['href']
