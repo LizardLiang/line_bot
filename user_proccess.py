@@ -10,7 +10,6 @@ user_status = list()
 def connect_to_spread():
     GDriveJSON = 'FAMAX-ef61fdf82b20.json'
     GSpreadSheet = 'line-bot'
-    global worksheet
     while True:
         try:
             scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
@@ -23,8 +22,7 @@ def connect_to_spread():
             print('無法連線Google試算表', ex)
             sys.exit(1)
             
-def user_index(_id):
-    global worksheet
+def user_index(_id, worksheet):
     worksheet = connect_to_spread()
     global user_id
     user_id = worksheet.col_values(1)
@@ -37,35 +35,31 @@ def user_index(_id):
         user_status.append(0)
     return user_id.index(_id)
 
-def check_status(_id):
+def check_status(_id, worksheet):
     global user_id
-    _index = user_index(_id)
+    _index = user_index(_id, worksheet)
     _status = user_status[_index]
     return _status
 
-def set_status(_id, status):
-    worksheet = connect_to_spread()
-    _index = user_index(_id)
+def set_status(_id, status, worksheet):
+    _index = user_index(_id, worksheet)
     user_status[_index] = 1
     worksheet.update_cell(_index+1, 2, str(status))
     return 'set ' + _id + 'to search'
 
-def clear_status(_id):
-    worksheet = connect_to_spread()
-    _index = user_index(_id)
+def clear_status(_id, worksheet):
+    _index = user_index(_id, worksheet)
     user_status[_index] = 0
     worksheet.update_cell(_index+1, 2, '0')
     return 'set ' + _id + 'to normal'
 
-def set_theater(_id, _url_k):
-    worksheet = connect_to_spread()
-    _index = user_index(_id)
+def set_theater(_id, _url_k, worksheet):
+    _index = user_index(_id, worksheet)
     worksheet.update_cell(_index+1, 3, _url_k)
     print('set theater success')
     
-def read_theater(_id):
-    worksheet = connect_to_spread()
-    _index = user_index(_id)
+def read_theater(_id, worksheet):
+    _index = user_index(_id, worksheet)
     print('index: ', _index)
     url_k_1 = worksheet.cell(_index+1, 3).value
     return url_k_1

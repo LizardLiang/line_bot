@@ -43,14 +43,15 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    wks_th = theater_app.connect_to_sheet()
+    wks_pro = user_proccess.connect_to_spread()
     user_id = event.source.user_id
-    message = TextSendMessage(text=event.message.text)
-    _index = user_proccess.check_status(user_id)
+    _index = user_proccess.check_status(user_id, wks_pro)
     if event.message.text == '!取消' or event.message.text == '!cancel':
-        user_proccess.clear_status(user_id)
+        user_proccess.clear_status(user_id, wks_pro)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text= '取消指令'))
     elif _index == '1':
-        user_proccess.clear_status(user_id)
+        user_proccess.clear_status(user_id, wks_pro)
         cut_1 = movie_app.find_movie(user_id, event.message.text) #去尋找電影
         if 'find nothing' in cut_1:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('找不到您的電影，或是影院')))
@@ -60,7 +61,7 @@ def handle_message(event):
                 reply_text = '找不到您的電影，或是影院'
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
     elif _index == '2':
-        user_proccess.clear_status(user_id)
+        user_proccess.clear_status(user_id, wks_pro)
         reply_text = movie_app.set_location(user_id, event.message.text)
         if reply_text == '-1':
             reply_text = '找不到您的電影，或是影院'
@@ -71,14 +72,14 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
         
     elif "!movie" == event.message.text:
-        user_proccess.set_status(user_id, 1)
+        user_proccess.set_status(user_id, 1, wks_pro)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('請輸入要搜尋的電影')))
         
     elif '!設地區' == event.message.text:
-        user_proccess.set_status(user_id, 2)
+        user_proccess.set_status(user_id, 2, wks_pro)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('請輸入要搜尋的地區')))
     elif '!電影院' == event.message.text:
-        reply_text = theater_app.list_theater()
+        reply_text = theater_app.list_theater(wks_th)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
         
     elif "慈孤觀音" in event.message.text:

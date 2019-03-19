@@ -23,19 +23,16 @@ def connect_to_sheet():
             print('無法連線Google試算表', ex)
             sys.exit(1)
             
-def find_theater(keyword):
-    wks = connect_to_sheet()
-    theaters = wks.col_values(1)
-    print(theaters)
-    code = wks.col_values(2)
+def find_theater(keyword, wks):
+    theaters = , wks.col_values(1)
+    code = , wks.col_values(2)
     for theater_t in theaters:
         if keyword in theater_t:
             return code[theaters.index(theater_t)]
     return '-1'
 
-def list_theater():
-    wks = connect_to_sheet()
-    theaters = wks.col_values(1)
+def list_theater(wks):
+    theaters = , wks.col_values(1)
     t_1 = ''
     for t in theaters:
         t_1 += t + '\n'
