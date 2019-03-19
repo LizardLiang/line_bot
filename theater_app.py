@@ -36,12 +36,3 @@ def list_theater(wks):
     for t in theaters:
         t_1 += t + '\n'
     return t_1
-
-def find_theater_2(keyword):
-    wks = connect_to_sheet()
-    theaters = wks.col_values(1)
-    code = wks.col_values(2)
-    for theater_t in theaters:
-        if keyword in theater_t:
-            return code[theaters.index(theater_t)]
-    return '-1'
