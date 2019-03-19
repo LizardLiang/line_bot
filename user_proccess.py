@@ -16,7 +16,6 @@ def connect_to_spread():
             key = ServiceAccountCredentials.from_json_keyfile_name(GDriveJSON, scope)
             gc = gspread.authorize(key)
             worksheet = gc.open(GSpreadSheet).worksheet('users')
-            print('connect to spread successful')
             return worksheet
         except Exception as ex:
             print('無法連線Google試算表', ex)

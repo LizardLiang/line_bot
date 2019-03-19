@@ -9,6 +9,7 @@ def get_url():
     r_2 = r_1.xpath('//ul[@class=\"filmListAll2\"]')
     r_3 = r_2[0].xpath('li')
     text = ''
+    text_url = ''
     text_1 = list()
     reply_text = ''
     for cnt in range(len(r_3)):
@@ -38,11 +39,11 @@ def get_teaser(movie_name):
             return target
     return "failed"
     
-def movie_sep(_id, string1):
+def movie_sep(_id, string1, wks_pro):
     t_m = string1.split(' ')
     loc_url = ''
     if len(t_m) <= 0:
-        loc_url = user_proccess.read_theater_2(_id)
+        loc_url = user_proccess.read_theater(_id, wks_pro)
     else:
         loc_url = t_m[1]
     t_m_2 = loc_url.split('/')

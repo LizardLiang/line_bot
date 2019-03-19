@@ -56,7 +56,7 @@ def handle_message(event):
         if 'find nothing' in cut_1:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('找不到您的電影，或是影院')))
         else:
-            reply_text = movie_app.movie_sep(user_id, cut_1) #找到電影後，去找時刻
+            reply_text = movie_app.movie_sep(user_id, cut_1, wks_pro) #找到電影後，去找時刻
             if reply_text == '-1':
                 reply_text = '找不到您的電影，或是影院'
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
