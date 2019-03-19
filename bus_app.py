@@ -10,10 +10,7 @@ def find_bus(bus_name):
         try:
             try:
                 t_4 = t.split(';')
-                print('t_4', t_4)
-            except:
-                continue
-            for t_5 in t_4:
+                print('t_4', t_4)for t_5 in t_4:
                 try:
                     t_1 = t_5.split('ebus(')
                 except:
@@ -22,6 +19,9 @@ def find_bus(bus_name):
                 t_2 = t_1[0].split(')')
                 t_3 = t_2[0].split(',')
                 print('t_3', t_3)
+            except:
+                continue
+            
             if bus_name in str(t[0]):
                 print('bus', str(t[0]))
         except:
