@@ -9,10 +9,12 @@ def find_bus(bus_name):
         t = r_3.text
         t1 = etree.tostring(r_3, pretty_print=True, method="html")
         print('t:', t)
-        if bus_name in t:
+        try:
+            if bus_name in t:
             r_4 = r_3.attrib['href']
             t_1 = etree.tostring(r_4)
             print('t_1:', t_1)
             t_2 = t_1.split('\"')
             print('t_2:', t_2[1])
             return t_2[1]
+        
