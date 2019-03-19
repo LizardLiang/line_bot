@@ -15,7 +15,7 @@ import random
 import datetime
 import gspread, sys
 from oauth2client.service_account import ServiceAccountCredentials as SAC
-import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app, bus_app
+import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app, bus_app, train_app
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
@@ -197,7 +197,7 @@ def handle_message(event):
         print('url:', url)
     elif "!火車" in event.message.text:
             cut = event.message.text.split('-')
-            text_list = train(cut[1])
+            text_list = train_app.train(cut[1])
             message = ''
             for num_3 in range(len(text_list)):
                 message = message + text_list[num_3]
@@ -211,23 +211,6 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=(message)))   
     elif '!2020總統大選' in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=('票投國民黨\n韓導三民主義統一中國')))   
-
-
-def train(string_1):
-    URL = "https://tw.piliapp.com/%E5%8F%B0%E9%90%B5%E7%81%AB%E8%BB%8A%E6%99%82%E5%88%BB%E8%A1%A8/?q="
-    URL = URL + string_1
-    res = requests.get(URL)
-    res.encoding = 'UTF-8'
-    soup = BeautifulSoup(res.text,'html.parser')
-    articles = soup.find_all('td')
-    text = list()
-    for num_1 in range(len(articles)):
-        if "訂票" == articles[num_1].text or '' == articles[num_1].text or " " in articles[num_1] or '小時' in articles[num_1].text:
-            continue
-        text.append(articles[num_1].text)
-    for num_2 in range(len(text)):
-        text[num_2] = text[num_2] + "\n"
-    return text
 
 @handler.add(JoinEvent)    
 def handle_join(event): #加入群組，會回復
