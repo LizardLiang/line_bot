@@ -25,3 +25,4 @@ while True:
 user_status:
             0  -> normal
             1  -> search movie time table
+            
