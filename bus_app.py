@@ -10,7 +10,7 @@ def find_bus(bus_name):
         try:
             for t_6 in t:
                 try:
-                    t_4 = t_6.split(';')
+                    t_4 = str(t_6).split(';')
                     print('t_4', t_4)
                     for t_5 in t_4:
                         try:
