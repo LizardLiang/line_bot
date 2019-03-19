@@ -15,11 +15,11 @@ def find_bus(bus_name):
                     for t_5 in t_4:
                         print('t_5', t_5)
                         try:
-                           t_1 = t_5.split('ebus(')
+                           t_1 = t_5.split('(')
                         except:
-                            t_1 = t_5.split('ebus1(')
+                            t_1 = t_5.split('(')
                         print('t_1', t_1)
-                        t_2 = t_1[0].split(')')
+                        t_2 = t_1[1].split(')')
                         t_3 = t_2[0].split(',')
                         print('t_3', t_3)
                 except:
