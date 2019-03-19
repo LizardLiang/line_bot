@@ -4,10 +4,10 @@ from lxml import etree
 def find_bus(bus_name):
     r = requests.get('http://www.e-bus.gov.taipei/index_6_1.html#')
     r_1 = etree.HTML(r.text)
+    print('r', r)
     r_2 = r_1.xpath('//a')
     for r_3 in r_2:
         t = r_3.text
-        t1 = etree.tostring(r_3, pretty_print=True, method="html")
         print('t:', t)
         try:
             if bus_name in t:
