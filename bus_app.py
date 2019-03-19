@@ -24,7 +24,7 @@ def find_bus(bus_name):
                         print('t_3', t_3)
                 except:
                     continue
-                if bus_name in str(t[0]):
-                    print('bus', str(t[0]))
+                if bus_name in t_3[2]:
+                    print('bus', t_3[2])
         except:
             continue
