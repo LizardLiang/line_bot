@@ -13,7 +13,7 @@ from lxml import etree
 import requests
 import random
 import datetime
-import gspread
+import gspread, sys
 from oauth2client.service_account import ServiceAccountCredentials as SAC
 import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app
 
@@ -52,7 +52,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text= '取消指令'))
     elif _index == '1':
         user_proccess.clear_status(user_id, wks_pro)
-        cut_1 = movie_app.find_movie(user_id, event.message.text) #去尋找電影
+        cut_1 = movie_app.find_movie(user_id, event.message.text, wks_th, wks_pro) #去尋找電影
         if 'find nothing' in cut_1:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str('找不到您的電影，或是影院')))
         else:
@@ -62,7 +62,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
     elif _index == '2':
         user_proccess.clear_status(user_id, wks_pro)
-        reply_text = movie_app.set_location(user_id, event.message.text)
+        reply_text = movie_app.set_location(user_id, event.message.text, wks_th, wks_pro)
         if reply_text == '-1':
             reply_text = '找不到您的電影，或是影院'
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
@@ -202,26 +202,6 @@ def handle_join(event): #加入群組，會回復
             TextMessage(text=newcoming_text)
         )
     print("JoinEvent =", JoinEvent)
-    
-
-def add_to_spread():
-    GDriveJSON = 'FAMAX-ef61fdf82b20.json'
-    GSpreadSheet = 'line-bot'
-    while True:
-        try:
-            scope = ['https://spreadsheets.google.com/feeds']
-            key = SAC.from_json_keyfile_name(GDriveJSON, scope)
-            gc = gspread.authorize(key)
-            worksheet = gc.open(GSpreadSheet).sheet1
-        except Exception as ex:
-            print('無法連線Google試算表', ex)
-            sys.exit(1)
-        textt=""
-        textt+=event.message.text
-        if textt!="":
-            worksheet.append_row((datetime.datetime.now(), textt))
-            print('新增一列資料到試算表' ,GSpreadSheet)
-            return textt
         
 import os
 if __name__ == "__main__":

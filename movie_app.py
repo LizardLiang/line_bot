@@ -9,7 +9,6 @@ def get_url():
     r_2 = r_1.xpath('//ul[@class=\"filmListAll2\"]')
     r_3 = r_2[0].xpath('li')
     text = ''
-    text_url = ''
     text_1 = list()
     reply_text = ''
     for cnt in range(len(r_3)):
@@ -43,7 +42,7 @@ def movie_sep(_id, string1):
     t_m = string1.split(' ')
     loc_url = ''
     if len(t_m) <= 0:
-        loc_url = user_proccess.read_theater(_id)
+        loc_url = user_proccess.read_theater_2(_id)
     else:
         loc_url = t_m[1]
     t_m_2 = loc_url.split('/')
@@ -70,20 +69,20 @@ def movie_sep(_id, string1):
     reply_text = reply_text.join(result_1) #把 list 加到 string 裡面
     return reply_text
 
-def find_movie(_id, name):
+def find_movie(_id, name, wks_th, wks_pro):
     t_m = name.split(' ')
     loc_url = ''
     if len(t_m) > 1:
-        loc_url = theater_app.find_theater_2(t_m[1])
+        loc_url = theater_app.find_theater(t_m[1], wks_th)
         if loc_url == '-1':
-            loc_url = theater_app.find_theater_2(t_m[0])
+            loc_url = theater_app.find_theater(t_m[0], wks_th)
             t_m_1 = t_m[1]
             if loc_url == '-1':
                 return 'find nothing'
         else:
             t_m_1 = t_m[0]
     else:
-        loc_url = user_proccess.read_theater_2(_id)
+        loc_url = user_proccess.read_theater(_id, wks_pro)
         t_m_1 = t_m[0]
     if loc_url == None:
         r_1 = requests.get('http://www.atmovies.com.tw/showtime/t02e13/a02/') #讀取樹林秀泰的網頁
@@ -108,10 +107,10 @@ def buy_ticket(date):
         r_1 += '&date=' + str(date[1]) + '/' + str(date[2]) + '/' + str(date[3])
     return r_1
 
-def set_location(_id, keyword):
-    _url = theater_app.find_theater(keyword)
+def set_location(_id, keyword, wks_th, wks_pro):
+    _url = theater_app.find_theater(keyword, wks_th)
     if _url != '-1':
-        user_proccess.set_theater(_id, _url)
+        user_proccess.set_theater(_id, _url, wks_pro)
         return 'set_location success'
     else:
         return '-1'
