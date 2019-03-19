@@ -17,5 +17,5 @@ def find_bus(bus_name):
                 t_2 = t_1.split('\"')
                 print('t_2:', t_2[1])
                 return t_2[1]
-            
-        
+        except:
+            print('none')
