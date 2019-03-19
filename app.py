@@ -65,8 +65,6 @@ def handle_message(event):
         if reply_text == '-1':
             reply_text = '找不到您的電影，或是影院'
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
-    elif
-
     
     #int_message = int(event.message.text) #to convert a string to a int
     if event.message.text == "健":
