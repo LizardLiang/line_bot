@@ -9,6 +9,7 @@ def find_bus(bus_name):
         t = r_3.xpath('text()')
         try:
             t_4 = t.split(';')
+            print('t_4', t_4)
             for t_5 in t_4:
                 try:
                     t_1 = t_5.split('ebus(')
