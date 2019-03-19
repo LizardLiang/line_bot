@@ -7,8 +7,8 @@ def find_bus(bus_name):
     r_2 = r_1.xpath('//script')
     for r_3 in r_2:
         t = r_3.xpath('text()')
-        print('t', t[0])
         try:
+            print('t', t[0])
             if bus_name in t[0]:
                 print('bus', t[0])
         except:
