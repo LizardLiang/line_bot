@@ -9,7 +9,7 @@ def find_bus(bus_name):
         t = r_3.xpath('text()')
         try:
             print('t', t[0])
-            if bus_name in t[0]:
+            if bus_name in str(t[0]):
                 print('bus', t[0])
         except:
             continue
