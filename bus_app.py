@@ -9,8 +9,8 @@ def find_bus(bus_name):
     for r_3 in r_2:
         t = r_3.xpath('text()')
         try:
-            print('t:', t[0])
-            t2 = t.index('e')
+            if bus_name in t[0]:
+                print('bus', t[0])
         except:
             continue
         try:
