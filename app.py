@@ -16,6 +16,7 @@ import datetime
 import gspread, sys
 from oauth2client.service_account import ServiceAccountCredentials as SAC
 import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app, bus_app
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
