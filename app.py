@@ -15,7 +15,7 @@ import random
 import datetime
 import gspread, sys
 from oauth2client.service_account import ServiceAccountCredentials as SAC
-import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app
+import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app, bus_app
 
 app = Flask(__name__)
 
@@ -191,6 +191,9 @@ def handle_message(event):
         porn_url = porn_app.row_porn()
         reply_text = '老司機帶你上路: ' + porn_url
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
+    elif '!bus' == event.message.text:
+        url = bus_app.find_bus(235)
+        print('url:', url)
 
         
 @handler.add(JoinEvent)    
