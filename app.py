@@ -193,7 +193,7 @@ def handle_message(event):
         reply_text = '老司機帶你上路: ' + porn_url
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
     elif '!bus' == event.message.text:
-        url = bus_app.find_bus(235)
+        url = bus_app.find_bus('235')
         print('url:', url)
     elif "!火車" in event.message.text:
             cut = event.message.text.split('-')
