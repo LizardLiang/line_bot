@@ -17,10 +17,13 @@ def web_to_json():
         name_1 = name_1.replace('\n', '')
         name_1 = name_1.replace(' ', '')
         name_1 = name_1.replace('價格', '')
-        price = t[cnt].xpath('string(.)')
-        price = price.replace('\n', '')
-        price = price.replace(' ', '')
-        price = price.replace('價格', '')
+        try:
+            price = t[cnt].xpath('string(.)')
+            price = price.replace('\n', '')
+            price = price.replace(' ', '')
+            price = price.replace('價格', '')
+        except:
+            continue
         reply = name_1 + ' ' + price
     print(reply)
   
