@@ -194,8 +194,9 @@ def handle_message(event):
         porn_url = porn_app.row_porn()
         reply_text = '老司機帶你上路: ' + porn_url
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
-    elif '!bus' == event.message.text:
-        url = bus_app.find_bus('235')
+    elif '!bus' in event.message.text:
+        key = event.message.text.split(' ')
+        url = bus_app.find_bus(key[1], key[2])
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text= url))
     elif "!火車" in event.message.text:
             cut = event.message.text.split('-')
