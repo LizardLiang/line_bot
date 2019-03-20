@@ -91,6 +91,7 @@ def handle_message(event):
             date = event.message.text.split('-')
         except:
             continue
+            
         if len(date) > 1 :
             b_url = movie_app.buy_ticket(date)
         else:
