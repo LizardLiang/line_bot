@@ -31,10 +31,11 @@ class Auth():
         }
 
 def find_bus(bus_name, stop_name):
-    check_region(bus_name)
+    """
     url_time = 'https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/' + bus_name + '?$format=JSON'
     url_route = 'https://ptx.transportdata.tw/MOTC/v2/Bus/StopOfRoute/City/Taipei/' + bus_name + '?$format=JSON'
     url_info = 'https://ptx.transportdata.tw/MOTC/v2/Bus/Route/City/Taipei/' + bus_name + '?$format=Json'
+    
     a = Auth(app_id, app_key)
     # 抓預估到站時間
     response = requests.get(url_time, headers= a.get_auth_header())
@@ -45,6 +46,9 @@ def find_bus(bus_name, stop_name):
     data = json.loads(response.content)
     #data_1 = json.loads(response_1.content)
     data_info = json.loads(response_info.content)
+    """
+    data = check_region(bus_name, 'https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City')
+    data_info = check_region(bus_name, 'https://ptx.transportdata.tw/MOTC/v2/Bus/Route/City')
     stop_1st = data_info[0]["DepartureStopNameZh"]
     stop_last = data_info[0]["DestinationStopNameZh"]
     print(stop_1st, stop_last)
@@ -72,14 +76,14 @@ def set_time(data, stop_name, index):
                     reply += d_1['StopName']['Zh_tw'] + '(公車未發車)' + "\n"
                     return reply
     
-def check_region(bus_name):
+def check_region(bus_name, url_part):
     a = Auth(app_id, app_key)
-    url = 'https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/' + bus_name + '?$format=JSON'
+    url = url_part + '/Taipei/' + bus_name + '?$format=JSON'
     response = requests.get(url, headers= a.get_auth_header())
     data = json.loads(response.content)
     if len(data) < 1:
-        url = 'https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/NewTaipei/' + bus_name + '?$format=JSON'
+        url = url_part + '/NewTaipei/' + bus_name + '?$format=JSON'
         response = requests.get(url, headers= a.get_auth_header())
         data = json.loads(response.content)
         print('change')
-    print('data', data)
+    return data
