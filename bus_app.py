@@ -31,6 +31,7 @@ class Auth():
         }
 
 def find_bus(bus_name, stop_name):
+    a = Auth(app_id, app_key)
     """
     url_time = 'https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/' + bus_name + '?$format=JSON'
     url_route = 'https://ptx.transportdata.tw/MOTC/v2/Bus/StopOfRoute/City/Taipei/' + bus_name + '?$format=JSON'
@@ -47,8 +48,8 @@ def find_bus(bus_name, stop_name):
     #data_1 = json.loads(response_1.content)
     data_info = json.loads(response_info.content)
     """
-    data = check_region(bus_name, 'https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City')
-    data_info = check_region(bus_name, 'https://ptx.transportdata.tw/MOTC/v2/Bus/Route/City')
+    data = check_region(bus_name, 'https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City', a)
+    data_info = check_region(bus_name, 'https://ptx.transportdata.tw/MOTC/v2/Bus/Route/City', a)
     stop_1st = data_info[0]["DepartureStopNameZh"]
     stop_last = data_info[0]["DestinationStopNameZh"]
     print(stop_1st, stop_last)
@@ -76,8 +77,7 @@ def set_time(data, stop_name, index):
                     reply += d_1['StopName']['Zh_tw'] + '(公車未發車)' + "\n"
                     return reply
     
-def check_region(bus_name, url_part):
-    a = Auth(app_id, app_key)
+def check_region(bus_name, url_part, a):
     url = url_part + '/Taipei/' + bus_name + '?$format=JSON'
     response = requests.get(url, headers= a.get_auth_header())
     data = json.loads(response.content)
