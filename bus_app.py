@@ -39,5 +39,5 @@ def find_bus(bus_name):
     for d_1 in data:
         print('d_1', d_1)
     for stops in data_1:
-        print('stops:', stops["stops"])
+        print('stops:', stops[0]["stops"])
    
