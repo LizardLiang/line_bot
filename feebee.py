@@ -8,14 +8,19 @@ def web_to_json():
     name = r_1.xpath('//li[starts-with(@class, "pure-g")]')
     t = r_1.xpath("//span[starts-with(@class,'price ellipsis xlarge')]|//li[starts-with(@class,'price ellipsis xlarge')]")
     for cnt in range(len(name)):
+        """
+        name_2 = name[cnt].xpath('span')
+        name_3 = name_2[0].xpath('a')
+        name_4 = name_3[0].attrib['title']
+        """
         name_1 = name[cnt].xpath('string(.)')
-        name_1 = name[cnt].replace('\n', '')
-        name_1 = name[cnt].replace(' ', '')
-        name_1 = name[cnt].replace('價格', '')
+        name_1 = name_1.replace('\n', '')
+        name_1 = name_1.replace(' ', '')
+        name_1 = name_1.replace('價格', '')
         price = t[cnt].xpath('string(.)')
-        price = t[cnt].replace('\n', '')
-        price = t[cnt].replace(' ', '')
-        price = t[cnt].replace('價格', '')
+        price = price.replace('\n', '')
+        price = price.replace(' ', '')
+        price = price.replace('價格', '')
         reply = name_1 + ' ' + price
     print(reply)
   
