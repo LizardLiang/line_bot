@@ -50,7 +50,7 @@ def find_bus(bus_name):
             except ValueError:
                 print(ValueError)
             except :
-                reply += 'StopName = ' + d_1['StopName']['Zh_tw'] + 'EST = ' + str(d_1['EstimateTime']) + "\n"
+                reply += 'StopName = ' + d_1['StopName']['Zh_tw'] + 'EST = ' + str(d_1) + "\n"
                 print('other error')
     return reply
    
