@@ -196,7 +196,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = reply_text))
     elif '!bus' == event.message.text:
         url = bus_app.find_bus('235')
-        print('url:', url)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text= url))
     elif "!火車" in event.message.text:
             cut = event.message.text.split('-')
             text_list = train_app.train(cut[1])
