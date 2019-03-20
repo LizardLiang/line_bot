@@ -9,5 +9,4 @@ def web_to_json():
     t = r_1.xpath(key)
     r_2 = etree.tostring(r_1)
     js = jsonparser.HTMLtoJSONParser.to_json(str(r_2))
-    for li in js['html']['body']['div'][4]['div'][2]['ol']['li']:
-        print(li['span'][1]['div'][0]['a']['span'][1][''])
+    print('t', t)
