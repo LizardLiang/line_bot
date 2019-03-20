@@ -7,4 +7,4 @@ def web_to_json():
     r_1 = etree.HTML(r.text)
     r_2 = etree.tostring(r_1)
     js = jsonparser.HTMLtoJSONParser.to_json(str(r_2))
-    print(js['html']['body']['div'][4]['div'][2]['ol'])
+    print(js['html']['body']['div'][4]['div']['div'][2]['ol'])
