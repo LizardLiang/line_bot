@@ -31,6 +31,7 @@ class Auth():
         }
 
 def find_bus(bus_name, stop_name):
+    check_region(bus_name)
     url_time = 'https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/' + bus_name + '?$format=JSON'
     url_route = 'https://ptx.transportdata.tw/MOTC/v2/Bus/StopOfRoute/City/Taipei/' + bus_name + '?$format=JSON'
     url_info = 'https://ptx.transportdata.tw/MOTC/v2/Bus/Route/City/Taipei/' + bus_name + '?$format=Json'
