@@ -40,6 +40,10 @@ def find_bus(bus_name):
     data_1 = json.loads(response_1.content)
     for d_1 in data:
         print('d_1', d_1['Direction'] == 0)
-    for stops in data_1:
-        print('stops:', stops["Stops"])
+    stops_0 = data_1[0]
+    for stops in stops_0:
+        stop_name = stops['StopName']['Zh_tw']
+        for d_1 in data:
+            if d_1['Direction'] == 0 and d_1['StopName']['Zh_tw'] == stop_name:
+                print('EST = ', d_1['EstimateTime'])
    
