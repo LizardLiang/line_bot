@@ -7,7 +7,7 @@ def web_to_json():
     r_1 = etree.HTML(r.text)
     name = r_1.xpath('//li[starts-with(@class, "pure-g")]')
     t = r_1.xpath("//span[starts-with(@class,'price ellipsis xlarge')]|//li[starts-with(@class,'price ellipsis xlarge')]")
-    for cnt in range(name):
+    for cnt in len(name):
         name_1 = name[cnt].xpath('string(.)')
         name_1 = name[cnt].replace('\n', '')
         name_1 = name[cnt].replace(' ', '')
