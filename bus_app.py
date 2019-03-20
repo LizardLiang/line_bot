@@ -43,7 +43,6 @@ def find_bus(bus_name):
     for stops in stops_0:
         for d_1 in data:
             try:
-                print(d_1['Direction'] == 0, d_1['StopName']['Zh_tw'] == stops['StopName']['Zh_tw'])
                 if d_1['Direction'] == 0 and d_1['StopName']['Zh_tw'] == stops['StopName']['Zh_tw']:
                     reply += 'StopName = ' + d_1['StopName']['Zh_tw'] + 'EST = ' + str(d_1['EstimateTime']) + "\n"
                     print('StopName = ', d_1['StopName']['Zh_tw'], 'EST = ', d_1['EstimateTime'])
@@ -51,5 +50,7 @@ def find_bus(bus_name):
                 print(ValueError)
             except :
                 print('other error', d_1)
+                if d_1['Direction'] == 0 and d_1['StopName']['Zh_tw'] == stops['StopName']['Zh_tw']:
+                    reply += 'StopName = ' + d_1['StopName']['Zh_tw'] + 'EST = 尚無等待時間' + "\n"
     return reply
    
