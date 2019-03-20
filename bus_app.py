@@ -39,7 +39,7 @@ def find_bus(bus_name):
     data = json.loads(response.content)
     data_1 = json.loads(response_1.content)
     for d_1 in data:
-        print('d_1', d_1)
+        print('d_1', d_1['Direction'] == '0')
     for stops in data_1:
         print('stops:', stops["Stops"])
    
