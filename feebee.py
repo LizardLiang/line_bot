@@ -25,7 +25,7 @@ def web_to_json():
             price = price.replace(' ', '')
             price = price.replace('價格', '')
         except:
-            print(name_1, t[cnt])
+            print(name_1, cnt)
         reply = name_1 + ' ' + price
     print(reply)
   
