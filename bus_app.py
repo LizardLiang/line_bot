@@ -77,7 +77,7 @@ def check_region(bus_name):
     url = 'https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/' + bus_name + '?$format=JSON'
     response = requests.get(url, headers= a.get_auth_header())
     data = json.loads(response.content)
-    if data == None:
+    if len(data) < 1:
         url = 'https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/NewTaipei/' + bus_name + '?$format=JSON'
         response = requests.get(url, headers= a.get_auth_header())
         data = json.loads(response.content)
