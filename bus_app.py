@@ -48,23 +48,26 @@ def find_bus(bus_name, stop_name):
     stop_last = data_info[0]["DestinationStopNameZh"]
     print(stop_1st, stop_last)
     reply = ""
+    reply += '往 ' + stop_last + '\n'
     #stops_0 = data_1[0]['Stops'] #路線圖的stops
-    reply = set_time(data, stop_name)
+    reply += set_time(data, stop_name, 0)
+    reply += '往 ' + stop_1st + '\n'
+    reply += set_time(data, stop_name, 1)
     return reply
     
    
 
-def set_time(data, stop_name):
+def set_time(data, stop_name, index):
     reply = ""
     for d_1 in data:
             try:
-                if d_1['Direction'] == 0 and d_1['StopName']['Zh_tw'] == stop_name:
+                if d_1['Direction'] == index and d_1['StopName']['Zh_tw'] == stop_name:
                     reply += 'StopName = ' + d_1['StopName']['Zh_tw'] + '(' + str(d_1['EstimateTime']) + ")min\n"
                     return reply
             except ValueError:
                 print(ValueError)
             except :
-                if d_1['Direction'] == 0 and d_1['StopName']['Zh_tw'] == stop_name:
+                if d_1['Direction'] == index and d_1['StopName']['Zh_tw'] == stop_name:
                     reply += 'StopName = ' + d_1['StopName']['Zh_tw'] + '(公車未發車)' + "\n"
                     return reply
     
