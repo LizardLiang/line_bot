@@ -8,7 +8,7 @@ def web_to_json():
     name = r_1.xpath('//li[starts-with(@class, "pure-g")]')
     t = r_1.xpath("//span[starts-with(@class,'price ellipsis xlarge')]|//li[starts-with(@class,'price ellipsis xlarge')]")
     price = ''
-    for cnt = 0 in range(len(name)-1):
+    for cnt in range(len(name)-1):
         """
         name_2 = name[cnt].xpath('span')
         name_3 = name_2[0].xpath('a')
