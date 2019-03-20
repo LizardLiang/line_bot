@@ -15,7 +15,7 @@ import random
 import datetime
 import gspread, sys
 from oauth2client.service_account import ServiceAccountCredentials as SAC
-import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app, bus_app, train_app
+import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app, bus_app, train_app, feebee
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
@@ -222,7 +222,9 @@ def handle_message(event):
                         break
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=(message)))   
     elif '!2020總統大選' in event.message.text:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=('票投國民黨\n韓導三民主義統一中國')))   
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=('票投國民黨\n韓導三民主義統一中國')))
+    elif '!js' == event.message.text:
+        feebee.web_to_json()
 
 @handler.add(JoinEvent)    
 def handle_join(event): #加入群組，會回復
