@@ -1,3 +1,5 @@
+import html
+
 class HTMLtoJSONParser(html.parser.HTMLParser):
     def __init__(self, raise_exception = True) :
         html.parser.HTMLParser.__init__(self)
