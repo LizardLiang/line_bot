@@ -33,7 +33,7 @@ class Auth():
 def find_bus(bus_name, stop_name):
     url_time = 'https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/' + bus_name + '?$format=JSON'
     url_route = 'https://ptx.transportdata.tw/MOTC/v2/Bus/StopOfRoute/City/Taipei/' + bus_name + '?$format=JSON'
-    url_info = 'https://ptx.transportdata.tw/MOTC/v2/Bus/Route/City/Taipei/' + bus_name + '?$format=xml'
+    url_info = 'https://ptx.transportdata.tw/MOTC/v2/Bus/Route/City/Taipei/' + bus_name + '?$format=Json'
     a = Auth(app_id, app_key)
     # 抓預估到站時間
     response = requests.get(url_time, headers= a.get_auth_header())
