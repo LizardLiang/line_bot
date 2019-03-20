@@ -38,13 +38,13 @@ def find_bus(bus_name):
     response_1 = requests.get('https://ptx.transportdata.tw/MOTC/v2/Bus/StopOfRoute/City/Taipei/235?$format=JSON', headers= a.get_auth_header())
     data = json.loads(response.content)
     data_1 = json.loads(response_1.content)
-    reply = ''
+    reply = ""
     stops_0 = data_1[0]['Stops']
     for stops in stops_0:
         for d_1 in data:
             try:
                 if d_1['Direction'] == 0 and d_1['StopName']['Zh_tw'] == stops['StopName']['Zh_tw']:
-                    reply.append('StopName = ' + d_1['StopName']['Zh_tw'] + 'EST = ' + str(d_1['EstimateTime']) + "\n")
+                    reply += 'StopName = ' + d_1['StopName']['Zh_tw'] + 'EST = ' + str(d_1['EstimateTime']) + "\n"
                     print('StopName = ', d_1['StopName']['Zh_tw'], 'EST = ', d_1['EstimateTime'])
             except ValueError:
                 print(ValueError)
