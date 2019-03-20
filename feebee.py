@@ -5,7 +5,7 @@ from lxml import etree
 def web_to_json():
     r = requests.get('https://feebee.com.tw/s/?q=AIR+PODS')
     r_1 = etree.HTML(r.text)
-    t = r_1.xpath("//li[starts-with(@class,'pure-g')]")
+    t = r_1.xpath("//span[starts-with(@class,'price ellipsis xlarge')]")
     for t_1 in t:
         t_2 = t_1.xpath('string(.)')
         t_3 = t_2.replace('\n', '')
