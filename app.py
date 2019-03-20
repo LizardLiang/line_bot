@@ -89,8 +89,8 @@ def handle_message(event):
     elif "!訂票" in event.message.text:
         try:
             date = event.message.text.split('-')
-        except ValueError:
-            print("just book")
+        except:
+            continue
         if len(date) > 1 :
             b_url = movie_app.buy_ticket(date)
         else:
@@ -172,6 +172,7 @@ def handle_message(event):
         movie_name = event.message.text.split('-')
         if len(movie_name) < 2 or movie_name[1] == '':
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '林志儒吃屎'))
+            return 0
         teaser_url = movie_app.get_teaser(movie_name[1])
         if teaser_url == "failed":
             reply_text = 'Your movie: ' + movie_name[1] + ' cannot be found' 

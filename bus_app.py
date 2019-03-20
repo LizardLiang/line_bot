@@ -11,9 +11,7 @@ def find_bus(bus_name):
             for t_6 in t:
                 try:
                     t_4 = str(t_6).split(';')
-                    print('t_4', t_4)
                     for t_5 in t_4:
-                        print('t_5', t_5)
                         try:
                            t_1 = t_5.split('(')
                         except:
