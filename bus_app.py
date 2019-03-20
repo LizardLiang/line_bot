@@ -68,7 +68,8 @@ def set_time(data, stop_name, index):
     for d_1 in data:
             try:
                 if d_1['Direction'] == index and d_1['StopName']['Zh_tw'] == stop_name:
-                    reply += d_1['StopName']['Zh_tw'] + '(' + str(d_1['EstimateTime']) + ")min\n"
+                    r_min = d_1['EstimateTime'] / 60
+                    reply += d_1['StopName']['Zh_tw'] + '(' + str(r_min) + ")min\n"
                     return reply
             except ValueError:
                 print(ValueError)
