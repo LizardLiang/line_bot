@@ -20,9 +20,10 @@ def find_bus(bus_name):
                         t_3 = t_2[0].split(',')
                         print('t_3', t_3)
                         print('len(t_3[2])', len(t_3[2]))
+                        if bus_name in t_3[2]:
+                            print('bus', t_3[2])
                 except:
                     continue
-                if bus_name in t_3[2]:
-                    print('bus', t_3[2])
+                
         except:
             continue
