@@ -89,16 +89,17 @@ def handle_message(event):
     elif "!訂票" in event.message.text:
         try:
             date = event.message.text.split('-')
+            if len(date) > 1 :
+                b_url = movie_app.buy_ticket(date)
+            else:
+                b_url = movie_app.buy_ticket(0)
+            if b_url == "find nothing":
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("尚無此日期場次")))
+            else :
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text=b_url))
         except:
-            print('!訂票error')
-        if len(date) > 1 :
-            b_url = movie_app.buy_ticket(date)
-        else:
-            b_url = movie_app.buy_ticket(0)
-        if b_url == "find nothing":
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("尚無此日期場次")))
-        else :
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=b_url))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text= '指令格式錯誤'))
+        
             
     elif "!擲骰子" == event.message.text:
         if user_id == "U58e43cf60b31e2ed4a101db4cab57fa6":

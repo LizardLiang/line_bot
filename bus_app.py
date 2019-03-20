@@ -16,10 +16,10 @@ def find_bus(bus_name):
                            t_1 = t_5.split('(')
                         except:
                             t_1 = t_5.split('(')
-                        print('t_1', t_1)
                         t_2 = t_1[1].split(')')
                         t_3 = t_2[0].split(',')
                         print('t_3', t_3)
+                        print('len(t_3[2])', len(t_3[2]))
                 except:
                     continue
                 if bus_name in t_3[2]:
