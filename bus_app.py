@@ -64,7 +64,7 @@ def set_time(data, stop_name):
             except ValueError:
                 print(ValueError)
             except :
-                if d_1['Direction'] == 0 and d_1['StopName']['Zh_tw'] == stops['StopName']['Zh_tw']:
+                if d_1['Direction'] == 0 and d_1['StopName']['Zh_tw'] == stop_name:
                     reply += 'StopName = ' + d_1['StopName']['Zh_tw'] + '(公車未發車)' + "\n"
                     return reply
     
