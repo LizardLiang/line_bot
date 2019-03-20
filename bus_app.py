@@ -22,7 +22,8 @@ def find_bus(bus_name):
                         print('len(t_3[2])', len(t_3[2]))
                         if bus_name in t_3[2]:
                             print('bus', t_3[2])
-                            url = 'http://www.e-bus.gov.taipei/newmap/Tw/Map?rid=' + t_3[1] + '&sec=0'
+                            t_4 = t_3[1].split('\"')
+                            url = 'http://www.e-bus.gov.taipei/newmap/Tw/Map?rid=' + t_4[1] + '&sec=0'
                             return url
                             
                 except:
