@@ -44,9 +44,9 @@ def find_bus(bus_name):
         for d_1 in data:
             try:
                 if d_1['Direction'] == 0 and d_1['StopName']['Zh_tw'] == stops['StopName']['Zh_tw']:
-                    reply += 'StopName = ' + d_1['StopName']['Zh_tw'] + 'EST = ' + str(d_1['EstimateTime']) + '\n'
+                    reply.append('StopName = ' + d_1['StopName']['Zh_tw'] + 'EST = ' + str(d_1['EstimateTime']) + '\n')
                     print('StopName = ', d_1['StopName']['Zh_tw'], 'EST = ', d_1['EstimateTime'])
-            except BaseException:
-                print(BaseException)
+            except BaseException, Argument:
+                print(Argument)
     return reply
    
