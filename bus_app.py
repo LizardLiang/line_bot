@@ -62,13 +62,22 @@ def set_time(data, stop_name, index):
     for d_1 in data:
             try:
                 if d_1['Direction'] == index and d_1['StopName']['Zh_tw'] == stop_name:
-                    reply += 'StopName = ' + d_1['StopName']['Zh_tw'] + '(' + str(d_1['EstimateTime']) + ")min\n"
+                    reply += d_1['StopName']['Zh_tw'] + '(' + str(d_1['EstimateTime']) + ")min\n"
                     return reply
             except ValueError:
                 print(ValueError)
             except :
                 if d_1['Direction'] == index and d_1['StopName']['Zh_tw'] == stop_name:
-                    reply += 'StopName = ' + d_1['StopName']['Zh_tw'] + '(公車未發車)' + "\n"
+                    reply += d_1['StopName']['Zh_tw'] + '(公車未發車)' + "\n"
                     return reply
     
-
+def check_region(bus_name):
+    a = Auth(app_id, app_key)
+    url = 'https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei/' + bus_name + '?$format=JSON'
+    response = requests.get(url, headers= a.get_auth_header())
+    data = json.loads(response.content)
+    if data[0] == None:
+        url = 'https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/NewTaipei/' + bus_name + '?$format=JSON'
+        response = requests.get(url, headers= a.get_auth_header())
+        data = json.loads(response.content)
+    print('data', data)
