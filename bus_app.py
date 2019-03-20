@@ -33,7 +33,11 @@ class Auth():
 def find_bus(bus_name):
     a = Auth(app_id, app_key)
     response = requests.get('http://ptx.transportdata.tw/MOTC/v2/Bus/Stop/City/Taipei?$top=30&$format=JSON', headers= a.get_auth_header())
+    response_1 = requests.get('https://ptx.transportdata.tw/MOTC/v2/Bus/StopOfRoute/City/Taipei/235?$format=JSON', headers= a.get_auth_header())
     data = json.loads(response.content)
+    data_1 = json.loads(response_1.content)
     for d_1 in data:
-        pprint(d_1)
+        pprint('d_1', d_1)
+    for stops in data_1:
+        print('stops:', stops)
    
