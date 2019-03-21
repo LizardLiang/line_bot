@@ -42,6 +42,7 @@ def web_to_json():
     print(len(name_l), len(price_l))
     reply = ''
     for cnt in range(len(name_l)-1):
-        reply += name_l[cnt] + price_l[cnt] + '\n'
+        reply += name_l[cnt] + ' $' +  price_l[cnt] + '\n'
     print(reply)
+    return reply
   
