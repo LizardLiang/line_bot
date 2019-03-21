@@ -21,8 +21,9 @@ def web_to_json():
         print(name_1)
         name_1 = name_1.getparent()
         print(name_1)
-        name_1 = name_1.getparent()
-        print(name_1)
+        if cnt == 0 :
+            name_1 = name_1.getparent()
+            print(name_1)
         name_1 = name_1.xpath('a')
         name_1 = name_1[0].xpath('string(.)')
         name_1 = name_1.replace('\n', '')
