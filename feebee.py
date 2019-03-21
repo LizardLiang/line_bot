@@ -30,6 +30,6 @@ def web_to_json():
             price = price.replace('價格', '')
             price_l.append(price)
         except:
-        reply = name_1 + ' ' + price
+            reply = name_1 + ' ' + price
     print(name_l, price_l)
   
