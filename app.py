@@ -149,10 +149,10 @@ def handle_message(event):
             print(game_key)
             game_key = random.randint(1,1000)
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("爆了齁，再玩啊")))
-            
+    """        
     elif "柏翰" in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("汪汪汪")))
-        
+    """    
     elif "!註冊" == event.message.text:
         user_index = user_id_app.check_user(user_id)
         if user_index == -1:
