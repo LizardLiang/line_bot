@@ -10,6 +10,7 @@ def web_to_json():
     price = ''
     name_l = list()
     price_l = list()
+    url_l = list()
     print(len(t), len(name))
     for cnt in range(len(t)-1):
         """
@@ -25,6 +26,8 @@ def web_to_json():
             name_1 = name_1.getparent()
             print(name_1)
         name_1 = name_1.xpath('a')
+        url = name_1.attrib['href']
+        url_l.append(url)
         name_1 = name_1[0].xpath('string(.)')
         name_1 = name_1.replace('\n', '')
         name_1 = name_1.replace(' ', '')
@@ -42,7 +45,7 @@ def web_to_json():
     print(len(name_l), len(price_l))
     reply = ''
     for cnt in range(9):
-        reply += name_l[cnt] + ' $' +  price_l[cnt] + '\n'
+        reply += name_l[cnt] + ' $' +  price_l[cnt] + '\n' + url_l[cnt] + '\n'
     print(reply)
     return reply
   
