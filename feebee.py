@@ -65,7 +65,7 @@ def web_to_json(message):
                                 k_word += word
                             else:
                                 k_word += '+' + word
-                    r_url += 'pl=' + max_value + 'ph=' + min_value
+                    r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + min_value + 'ph=' + max_value
                     print('max', max_value, 'min', min_value)
                 elif '<' in obj[0]:
                     k_word = ''
