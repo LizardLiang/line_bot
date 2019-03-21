@@ -3,7 +3,7 @@ from lxml import etree
 
 
 def web_to_json():
-    r = requests.get('https://feebee.com.tw/s/?q=AIR+PODS')
+    r = requests.get('https://feebee.com.tw/s/?q=寵物碗')
     r_1 = etree.HTML(r.text)
     name = r_1.xpath('//li[starts-with(@class, "pure-g")]')
     t = r_1.xpath("//span[starts-with(@class,'price ellipsis xlarge')]|//li[starts-with(@class,'price ellipsis xlarge')]")
@@ -41,7 +41,7 @@ def web_to_json():
             print('')
     print(len(name_l), len(price_l))
     reply = ''
-    for cnt in range(len(name_l)-1):
+    for cnt in range(9):
         reply += name_l[cnt] + ' $' +  price_l[cnt] + '\n'
     print(reply)
     return reply
