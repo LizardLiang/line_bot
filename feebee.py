@@ -21,7 +21,7 @@ def web_to_json():
         name_1 = name_1[0].getparent()
         name_1 = name_1[0].getparent()
         name_1 = name_1[0].xpath('a')
-        name_1 = name_1.xpath('string(.)')
+        name_1 = name_1[0].xpath('string(.)')
         name_1 = name_1.replace('\n', '')
         name_1 = name_1.replace(' ', '')
         name_1 = name_1.replace('價格', '')
