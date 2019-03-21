@@ -17,7 +17,7 @@ def web_to_json(message):
         max_value = ''
         min_value = ''
         k_word = ''
-        r_url = 'https://feebee.com.tw/s/?q=
+        r_url = 'https://feebee.com.tw/s/?q='
         try:
             obj = item[1].split('<')
             if '>' in obj[1]:
