@@ -4,7 +4,9 @@ from lxml import etree
 
 def web_to_json(message):
     item = message.split('!比價')
-    r = requests.get('https://feebee.com.tw/s/?q=' + item[1])
+    print('item', item[1])
+    r_url = 'https://feebee.com.tw/s/?q=' + item[1]
+    r = requests.get(r_url)
     r_1 = etree.HTML(r.text)
     name = r_1.xpath('//li[starts-with(@class, "pure-g")]')
     t = r_1.xpath("//span[starts-with(@class,'price ellipsis xlarge')]|//li[starts-with(@class,'price ellipsis xlarge')]")
