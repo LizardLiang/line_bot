@@ -5,11 +5,44 @@ from lxml import etree
 def web_to_json(message):
     item = message.split('!比價')
     print('item', item[1])
-    if ' ' in item[1]:
-        obj = item[1].split(' ')
+    if ' ' in item[1] and ('<' not in item[1] or '>' not in item[1]):
+        item = item[1].split(' ')
         r_url = 'https://feebee.com.tw/s/?q='
-        for obj_1 in obj:
-            r_url += '+' + obj_1
+        for item_1 in item:
+            if item_1 == item[0]:
+                r_url += item_1
+            else:
+                r_url += '+' + item_1
+    elif '<' in item[1] or '>' in item[1]:
+        r_url = 'https://feebee.com.tw/s/?q=AIRPODS&ptab=1&sort=p&mode=l&best=&'
+        try:
+            obj = item[1].split('<')
+            if '>' in obj[1]:
+                obj_1 = obj[1].split('>')
+                max_value = obj_1[1]
+                min_value = obj_1[0]
+                r_url += 'pl=' + min_value + 'ph=' + max_value
+                print('max', obj_1[1], 'min', obj_1[0])
+            else:
+                min_value = obj[1]
+                r_url += 'pl=' + min_value
+                print('min', obj[1])
+        except:
+            try:
+                obj = item[1].split('>')
+                if '<' in obj[1]:
+                    obj_1 = obj[1].split('<')
+                    min_value = obj_1[1]
+                    max_value = obj_1[0]
+                    r_url += 'pl=' + min_value + 'ph=' + max_value
+                    print('max', max_value, 'min', min_value)
+                else:
+                    max_value = obj[1]
+                    r_url += 'ph=' + max_value
+                    print('max', max_value)
+            except:
+                print('no < and >')
+
     else:
         r_url = 'https://feebee.com.tw/s/?q=' + item[1]
     print('r_url', r_url)
