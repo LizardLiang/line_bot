@@ -51,7 +51,7 @@ def web_to_json(message):
                 r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + min_value + '&ph=' + max_value
                 print('max', obj_1[1], 'min', obj_1[0])
             else:
-                min_value = obj[1]
+                max_value = obj[1]
                 k_word = obj[0]
                 r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + min_value + '&ph=' + max_value
                 print('min', obj[1])
@@ -91,7 +91,7 @@ def web_to_json(message):
                     r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + max_value + '&ph=' + min_value
                     print('max', obj_1[1], 'min', obj_1[0])
                 else:
-                    max_value = obj[1]
+                    min_value = obj[1]
                     k_word = obj[0]
                     r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + min_value + '&ph=' + max_value
                     print('max', max_value)
