@@ -12,7 +12,8 @@ def web_to_json(message):
     name_l = list()
     price_l = list()
     url_l = list()
-    print(len(t), len(name))
+    if len(t) == 0:
+        return 'no such thing'
     for cnt in range(len(t)-1):
         """
         name_2 = name[cnt].xpath('span')
@@ -27,6 +28,8 @@ def web_to_json(message):
             name_1 = name_1.getparent()
             print(name_1)
         name_1 = name_1.xpath('a')
+        if len(name_1) < 1:
+            return 'no such thing'
         url = name_1[0].attrib['href']
         url_s = get_shorten(url)
         url_l.append(url_s)
