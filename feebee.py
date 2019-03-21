@@ -21,11 +21,11 @@ def web_to_json(message):
                 obj_1 = obj[1].split('>')
                 max_value = obj_1[1]
                 min_value = obj_1[0]
-                r_url += 'pl=' + min_value + 'ph=' + max_value
+                r_url += 'pl=' + max_value + 'ph=' + min_value
                 print('max', obj_1[1], 'min', obj_1[0])
             else:
                 min_value = obj[1]
-                r_url += 'pl=' + min_value
+                r_url += 'ph=' + min_value
                 print('min', obj[1])
         except:
             try:
@@ -34,11 +34,11 @@ def web_to_json(message):
                     obj_1 = obj[1].split('<')
                     min_value = obj_1[1]
                     max_value = obj_1[0]
-                    r_url += 'pl=' + min_value + 'ph=' + max_value
+                    r_url += 'pl=' + max_value + 'ph=' + min_value
                     print('max', max_value, 'min', min_value)
                 else:
                     max_value = obj[1]
-                    r_url += 'ph=' + max_value
+                    r_url += 'pl=' + max_value
                     print('max', max_value)
             except:
                 print('no < and >')
