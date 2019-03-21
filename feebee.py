@@ -5,7 +5,13 @@ from lxml import etree
 def web_to_json(message):
     item = message.split('!比價')
     print('item', item[1])
-    r_url = 'https://feebee.com.tw/s/?q=' + item[1]
+    if ' ' in item[1]:
+        obj = item.split(' ')
+        r_url = 'https://feebee.com.tw/s/?q='
+        for obj_1 in obj:
+            r_url += obj_1
+    else:
+        r_url = 'https://feebee.com.tw/s/?q=' + item[1]
     print('r_url', r_url)
     r = requests.get(r_url)
     r_1 = etree.HTML(r.text)
