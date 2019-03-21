@@ -11,13 +11,15 @@ def web_to_json():
     name_l = list()
     price_l = list()
     print(len(t), len(name))
-    for cnt in range(len(name)-1):
+    for cnt in range(len(t)-1):
         """
         name_2 = name[cnt].xpath('span')
         name_3 = name_2[0].xpath('a')
         name_4 = name_3[0].attrib['title']
         """
-        name_1 = name[cnt].xpath('string(.)')
+        name_1 = t[cnt].getparent()
+        name_1 = name_1.xpath('a')
+        name_1 = name_1.xpath('string(.)')
         name_1 = name_1.replace('\n', '')
         name_1 = name_1.replace(' ', '')
         name_1 = name_1.replace('價格', '')
