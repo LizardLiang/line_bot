@@ -27,7 +27,8 @@ def web_to_json():
             print(name_1)
         name_1 = name_1.xpath('a')
         url = name_1[0].attrib['href']
-        url_l.append(url)
+        url_s = get_shorten(url)
+        url_l.append(url_s)
         name_1 = name_1[0].xpath('string(.)')
         name_1 = name_1.replace('\n', '')
         name_1 = name_1.replace(' ', '')
@@ -49,3 +50,6 @@ def web_to_json():
     print(reply)
     return reply
   
+def get_shorten(url):
+    r = requests.post('https://api.pics.ee/v1/links/?access_token=20f07f91f3303b2f66ab6f61698d977d69b83d64', data = {"url":"https://blog.eilis-ai.com/eilis%E6%96%B0%E5%8A%9F%E8%83%BD%E4%B8%8A%E7%B7%9A-%E7%B8%AE%E7%9F%AD%E5%9D%80%E6%9C%8D%E5%8B%99picsee-585ddda961f9", data = {url})
+    print(r)
