@@ -93,7 +93,7 @@ def web_to_json(message):
                 else:
                     min_value = obj[1]
                     k_word = obj[0]
-                    r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + min_value + '&ph=' + max_value
+                    r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + min_value + '&ph='
                     print('max', min_value)
             except:
                 print('no < and >')
