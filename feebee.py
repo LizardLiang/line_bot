@@ -24,22 +24,24 @@ def web_to_json(message):
                 obj_1 = obj[1].split('>')
                 max_value = obj_1[1]
                 min_value = obj_1[0]
-                words = obj[0].split(' ')
-                for word in words:
-                    if word == words[0]:
-                        k_word += word
-                    else:
-                        k_word += '+' + word
+                if ' ' in obj[0]:
+                    words = obj[0].split(' ')
+                    for word in words:
+                        if word == words[0]:
+                            k_word += word
+                        else:
+                            k_word += '+' + word
                 r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + min_value + 'ph=' + max_value
                 print('max', obj_1[1], 'min', obj_1[0])
             elif '>' in obj[0]:
                 obj_1 = obj[0].split('>')
-                words = obj_1[0]
-                for word in words:
-                    if word == words[0]:
-                        k_word += word
-                    else:
-                        k_word += '+' + word
+                if ' ' in obj_1[0]:
+                    words = obj_1[0].split(' ')
+                    for word in words:
+                        if word == words[0]:
+                            k_word += word
+                        else:
+                            k_word += '+' + word
                 max_value = obj[1]
                 min_value = obj_1[1]
                 r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + min_value + 'ph=' + max_value
