@@ -53,6 +53,6 @@ def web_to_json():
 def get_shorten(url):
     print('url', url)
     r = requests.post('https://api.pics.ee/v1/links/?access_token=20f07f91f3303b2f66ab6f61698d977d69b83d64', data = {'url':str(url)})
-    r_1 = json.load(r.text)
+    r_1 = r.text
     print(r_1["data"]["picseeUrl"])
     return r_1["data"]["picseeUrl"]
