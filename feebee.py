@@ -18,8 +18,11 @@ def web_to_json():
         name_4 = name_3[0].attrib['title']
         """
         name_1 = t[cnt].getparent() # -> 找到父標籤
+        print(name_1)
         name_1 = name_1[0].getparent()
+        print(name_1)
         name_1 = name_1[0].getparent()
+        print(name_1)
         name_1 = name_1[0].xpath('a')
         name_1 = name_1[0].xpath('string(.)')
         name_1 = name_1.replace('\n', '')
