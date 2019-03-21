@@ -31,6 +31,8 @@ def web_to_json(message):
                             k_word += word
                         else:
                             k_word += '+' + word
+                else:
+                    k_word = obj[0]
                 r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + min_value + 'ph=' + max_value
                 print('max', obj_1[1], 'min', obj_1[0])
             elif '>' in obj[0]:
@@ -42,6 +44,8 @@ def web_to_json(message):
                             k_word += word
                         else:
                             k_word += '+' + word
+                else:
+                    k_word = obj_1[0]
                 max_value = obj[1]
                 min_value = obj_1[1]
                 r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + min_value + 'ph=' + max_value
@@ -66,6 +70,8 @@ def web_to_json(message):
                                 k_word += word
                             else:
                                 k_word += '+' + word
+                    else:
+                        k_word = obj[0]
                     r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + min_value + 'ph=' + max_value
                     print('max', max_value, 'min', min_value)
                 elif '<' in obj[0]:
@@ -78,6 +84,8 @@ def web_to_json(message):
                                 k_word += word
                             else:
                                 k_word += '+' + word
+                    else:
+                        k_word = obj_1[0]
                     min_value = obj[1]
                     max_value = obj_1[1]
                     r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + max_value + 'ph=' + min_value
