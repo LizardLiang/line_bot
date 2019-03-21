@@ -21,9 +21,7 @@ def web_to_json(message):
         name_4 = name_3[0].attrib['title']
         """
         name_1 = t[cnt].getparent() # -> 找到父標籤
-        print(name_1)
         name_1 = name_1.getparent()
-        print(name_1)
         if cnt == 0 :
             name_1 = name_1.getparent()
             print(name_1)
@@ -49,8 +47,12 @@ def web_to_json(message):
             print('')
     print(len(name_l), len(price_l))
     reply = ''
-    for cnt in range(4):
-        reply += name_l[cnt] + ' $' +  price_l[cnt] + '\n' + url_l[cnt] + '\n'
+    if len(price_l) >= 4:
+        for cnt in range(4):
+            reply += name_l[cnt] + ' $' +  price_l[cnt] + '\n' + url_l[cnt] + '\n'
+    else:
+        for cnt in range(len(price_l)):
+            reply += name_l[cnt] + ' $' +  price_l[cnt] + '\n' + url_l[cnt] + '\n'
     print(reply)
     return reply
   
