@@ -26,7 +26,7 @@ def web_to_json():
             name_1 = name_1.getparent()
             print(name_1)
         name_1 = name_1.xpath('a')
-        url = name_1.attrib['href']
+        url = name_1[0].attrib['href']
         url_l.append(url)
         name_1 = name_1[0].xpath('string(.)')
         name_1 = name_1.replace('\n', '')
