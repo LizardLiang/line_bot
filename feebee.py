@@ -54,19 +54,29 @@ def web_to_json(message):
             try:
                 obj = item[1].split('>')
                 if '<' in obj[1]:
+                    k_word = ''
                     obj_1 = obj[1].split('<')
                     min_value = obj_1[1]
                     max_value = obj_1[0]
+                    if ' ' in obj[0]
+                        words = obj[0].split(' ')
+                        for word in words:
+                            if word == words[0]:
+                                k_word += word
+                            else:
+                                k_word += '+' + word
                     r_url += 'pl=' + max_value + 'ph=' + min_value
                     print('max', max_value, 'min', min_value)
                 elif '<' in obj[0]:
+                    k_word = ''
                     obj_1 = obj[0].split('<')
-                    words = obj_1[0]
-                    for word in words:
-                        if word == words[0]:
-                            k_word += word
-                        else:
-                            k_word += '+' + word
+                    if ' ' in obj_1[0]:
+                        words = obj_1[0]
+                        for word in words:
+                            if word == words[0]:
+                                k_word += word
+                            else:
+                                k_word += '+' + word
                     min_value = obj[1]
                     max_value = obj_1[1]
                     r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + max_value + 'ph=' + min_value
