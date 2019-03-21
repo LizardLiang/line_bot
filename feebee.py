@@ -54,4 +54,4 @@ def get_shorten(url):
     print('url', url)
     r = requests.post('https://api.pics.ee/v1/links/?access_token=20f07f91f3303b2f66ab6f61698d977d69b83d64', data = {'url':str(url)})
     print(r.text)
-    return r['data']
+    return r['data']['picseeUrl']
