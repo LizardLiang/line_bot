@@ -3,7 +3,10 @@ from lxml import etree
 
 
 def web_to_json(message):
-    item = message.split('!比價')
+    if '!' in message:
+        item = message.split('!比價')
+    else:
+        item = message.split('！比價')
     print('item', item[1])
     if ' ' in item[1] and ('<' not in item[1] and '>' not in item[1]):
         item = item[1].split(' ')
