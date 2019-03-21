@@ -121,14 +121,17 @@ def web_to_json(message):
         if cnt == 0 :
             name_1 = name_1.getparent()
             print(name_1)
-        name_1 = name_1.xpath('a')
-        url = name_1[0].attrib['href']
-        url_s = get_shorten(url)
-        url_l.append(url_s)
-        name_1 = name_1[0].xpath('string(.)')
-        name_1 = name_1.replace('\n', '')
-        name_1 = name_1.replace(' ', '')
-        name_1 = name_1.replace('價格', '')
+        try:
+            name_1 = name_1.xpath('a')
+            url = name_1[0].attrib['href']
+            url_s = get_shorten(url)
+            url_l.append(url_s)
+            name_1 = name_1[0].xpath('string(.)')
+            name_1 = name_1.replace('\n', '')
+            name_1 = name_1.replace(' ', '')
+            name_1 = name_1.replace('價格', '')
+        except
+            print('')
         if name_1 != None:
             name_l.append(name_1)
         try:
