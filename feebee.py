@@ -6,6 +6,7 @@ def web_to_json(message):
     item = message.split('!比價')
     print('item', item[1])
     r_url = 'https://feebee.com.tw/s/?q=' + item[1]
+    print('r_url', r_url)
     r = requests.get(r_url)
     r_1 = etree.HTML(r.text)
     name = r_1.xpath('//li[starts-with(@class, "pure-g")]')
@@ -47,7 +48,6 @@ def web_to_json(message):
             price_l.append(price)
         except:
             print('')
-    print(len(name_l), len(price_l))
     reply = ''
     if len(price_l) >= 4:
         for cnt in range(4):
