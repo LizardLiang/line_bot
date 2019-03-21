@@ -14,14 +14,36 @@ def web_to_json(message):
             else:
                 r_url += '+' + item_1
     elif '<' in item[1] or '>' in item[1]:
-        r_url = 'https://feebee.com.tw/s/?q=AIRPODS&ptab=1&sort=p&mode=l&best=&'
+        max_value = ''
+        min_value = ''
+        k_word = ''
+        r_url = 'https://feebee.com.tw/s/?q=
         try:
             obj = item[1].split('<')
             if '>' in obj[1]:
                 obj_1 = obj[1].split('>')
                 max_value = obj_1[1]
                 min_value = obj_1[0]
-                r_url += 'pl=' + max_value + 'ph=' + min_value
+                words = obj[0].split(' ')
+                for word in words:
+                    if word == words[0]:
+                        k_word += word
+                    else:
+                        k_word += '+' + word
+                
+                r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + max_value + 'ph=' + min_value
+                print('max', obj_1[1], 'min', obj_1[0])
+            elif '>' in obj[0]:
+                obj_1 = obj[0].split('>')
+                words = obj_1[0]
+                for word in words:
+                    if word == words[0]:
+                        k_word += word
+                    else:
+                        k_word += '+' + word
+                max_value = obj[1]
+                min_value = obj_1[1]
+                r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + max_value + 'ph=' + min_value
                 print('max', obj_1[1], 'min', obj_1[0])
             else:
                 min_value = obj[1]
@@ -36,6 +58,18 @@ def web_to_json(message):
                     max_value = obj_1[0]
                     r_url += 'pl=' + max_value + 'ph=' + min_value
                     print('max', max_value, 'min', min_value)
+                elif '<' in obj[0]:
+                    obj_1 = obj[0].split('<')
+                    words = obj_1[0]
+                    for word in words:
+                        if word == words[0]:
+                            k_word += word
+                        else:
+                            k_word += '+' + word
+                    min_value = obj[1]
+                    max_value = obj_1[1]
+                    r_url += k_word + '&ptab=1&sort=p&mode=l&best=&pl=' + max_value + 'ph=' + min_value
+                    print('max', obj_1[1], 'min', obj_1[0])
                 else:
                     max_value = obj[1]
                     r_url += 'pl=' + max_value
