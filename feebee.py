@@ -130,7 +130,7 @@ def web_to_json(message):
             name_1 = name_1.replace('\n', '')
             name_1 = name_1.replace(' ', '')
             name_1 = name_1.replace('價格', '')
-        except
+        except:
             print('')
         if name_1 != None:
             name_l.append(name_1)
