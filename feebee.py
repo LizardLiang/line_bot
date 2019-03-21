@@ -145,11 +145,19 @@ def web_to_json(message):
     reply = ''
     if len(price_l) >= 4:
         for cnt in range(4):
-            reply += name_l[cnt] + ' $' +  price_l[cnt] + '\n' + url_l[cnt] + '\n'
+            try:
+                reply += name_l[cnt] + ' $' +  price_l[cnt] + '\n' + url_l[cnt] + '\n'
+            except:
+                print('')
     else:
         for cnt in range(len(price_l)):
-            reply += name_l[cnt] + ' $' +  price_l[cnt] + '\n' + url_l[cnt] + '\n'
+            try:
+                reply += name_l[cnt] + ' $' +  price_l[cnt] + '\n' + url_l[cnt] + '\n'
+            except:
+                print('')
     print(reply)
+    if reply == None:
+        reply = 'so such thing'
     return reply
   
 def get_shorten(url):
