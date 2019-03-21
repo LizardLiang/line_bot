@@ -122,8 +122,6 @@ def web_to_json(message):
             name_1 = name_1.getparent()
             print(name_1)
         name_1 = name_1.xpath('a')
-        if len(name_1) < 1:
-            return 'no such thing'
         url = name_1[0].attrib['href']
         url_s = get_shorten(url)
         url_l.append(url_s)
