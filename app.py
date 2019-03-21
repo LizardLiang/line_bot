@@ -223,8 +223,8 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=(message)))   
     elif '!2020總統大選' in event.message.text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=('票投國民黨\n韓導三民主義統一中國')))
-    elif '!比價' == event.message.text:
-        reply = feebee.web_to_json()
+    elif '!比價' in event.message.text:
+        reply = feebee.web_to_json(event.message.text)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text= reply))
 
 @handler.add(JoinEvent)    
