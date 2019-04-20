@@ -15,7 +15,7 @@ import random
 import datetime
 import gspread, sys
 from oauth2client.service_account import ServiceAccountCredentials as SAC
-import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app, bus_app, train_app, feebee
+import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app, bus_app, train_app, feebee, earthquake
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
@@ -221,6 +221,9 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=('票投國民黨\n韓導三民主義統一中國')))
     elif '!比價' in event.message.text or '！比價' in event.message.text:
         reply = feebee.web_to_json(event.message.text)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text= reply))
+    elif '!地震' in event.message.text or '！地震' in event.message.text:
+        reply = earthquake.e_report()
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text= reply))
 
 @handler.add(JoinEvent)    

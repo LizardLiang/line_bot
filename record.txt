@@ -26,3 +26,6 @@ user_status:
             0  -> normal
             1  -> search movie time table
             
+            
+氣象平台授權碼:
+    CWB-34B859A6-E135-4A75-A4F7-0C34526588BA
