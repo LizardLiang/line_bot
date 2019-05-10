@@ -12,4 +12,4 @@ def get_streams(twitchid):
         if r_3['type'] ==  'live':
             return 'https://www.twitch.tv/' + id[1] + '\n' + id[1] + ' is currently streaming' 
     else:
-        return id[1] + ' is currently offline'
+        return 'https://www.twitch.tv/' + id[1] + '\n' + id[1] + ' is currently offline'
