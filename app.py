@@ -140,10 +140,13 @@ def handle_message(event):
         game_key = random.randint(1,1000)
         print(game_key)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("終極密碼已佈署完成")))
+        game_key = 0
         
     elif "!猜" in event.message.text:
         game_num = event.message.text.split("-")
-        if int(game_num[1]) > game_key:
+        if game_key == 0:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("密碼未設置")))
+        elif int(game_num[1]) > game_key:
             print(game_key)
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("太大了，幹")))
         elif int(game_num[1]) < game_key:
