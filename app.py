@@ -15,7 +15,7 @@ import random
 import datetime
 import gspread, sys
 from oauth2client.service_account import ServiceAccountCredentials as SAC
-import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app, bus_app, train_app, feebee, earthquake
+import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app, bus_app, train_app, feebee, earthquake, twitchapp
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
@@ -77,7 +77,11 @@ def handle_message(event):
     #int_message = int(event.message.text) #to convert a string to a int
     if event.message.text == "健":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
-        
+
+    elif "!up?" in event.message.text:
+        reply = twitchapp.get_streams(event.message.text)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply))
+
     elif "!movie" == event.message.text:
         wks_pro = user_proccess.connect_to_spread()
         user_proccess.set_status(user_id, 1, wks_pro)
