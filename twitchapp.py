@@ -13,5 +13,3 @@ def get_streams(twitchid):
             return 'https://www.twitch.tv/' + id[1] + '\n' + r_3['title'] 
     else:
         return 'https://www.twitch.tv/' + id[1] + '\n' + id[1] + ' is currently offline'
-
-def get_title(id):
