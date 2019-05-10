@@ -78,7 +78,7 @@ def handle_message(event):
     if event.message.text == "健":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str("健三小")))
 
-    elif "!up?" in event.message.text:
+    elif "!up?" in event.message.text or "！up?" in event.message.text:
         reply = twitchapp.get_streams(event.message.text)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply))
 
