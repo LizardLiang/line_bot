@@ -1,6 +1,8 @@
 import requests, json
 from bs4 import BeautifulSoup
 
+status = False
+
 def get_streams(twitchid):
     if ' ' in twitchid:
         id = twitchid.split(' ')
@@ -8,12 +10,14 @@ def get_streams(twitchid):
         r = requests.get("https://api.twitch.tv/helix/streams?user_login=" + id[1], headers = header)
         r_1 = json.loads(r.content)
         r_2 = r_1["data"]
+        global status
         if len(r_2) != 0:
             r_3 = r_2[0]
-            if r_3['type'] == 'live':
+            if r_3['type'] == 'live' and not status:
+                status = True
                 return 'https://www.twitch.tv/' + id[1] + '\n' + r_3['user_name'] + '\n' + r_3['title'] 
-        else:
-            print(r_2)
+        elif len(r_2) == 0 and status:
+            status = False
             return 'https://www.twitch.tv/' + id[1] + '\n' + id[1] + ' is currently offline'
     else:
         id = twitchid
@@ -23,8 +27,9 @@ def get_streams(twitchid):
         r_2 = r_1["data"]
         if len(r_2) != 0:
             r_3 = r_2[0]
-            if r_3['type'] == 'live':
+            if r_3['type'] == 'live' and not status:
+                status = True
                 return 'https://www.twitch.tv/' + id + '\n' + r_3['user_name'] + '\n' + r_3['title'] 
-        else:
-            print(r_2)
+        elif len(r_2) == 0 and status:
+            status = False
             return 'https://www.twitch.tv/' + id + '\n' + id + ' is currently offline'
