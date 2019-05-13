@@ -245,6 +245,7 @@ def handle_message(event):
     # elif '韓國瑜' in event.message.text:
     #     reply = "立足台灣、胸懷大陸、放眼世界、征服宇宙"
     #     line_bot_api.reply_message(event.reply_token, TextSendMessage(reply))
+    pass
 
 @handler.add(JoinEvent)    
 def handle_join(event): #加入群組，會回復
