@@ -10,18 +10,16 @@ from linebot.models import *
 
 from lxml import etree
 
-import requests, threading
+import requests
 import random
 import datetime
 import gspread, sys
 from oauth2client.service_account import ServiceAccountCredentials as SAC
 import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app, bus_app, train_app, feebee, earthquake, twitchapp
 from bs4 import BeautifulSoup
+from threading import Timer
 
 app = Flask(__name__)
-
-timer = threading.Timer(60, checkstate)
-timer.start()
 
 # Channel Access Token
 line_bot_api = LineBotApi('fx3DY+LD68LLi5K+09cpEoPLVfeeb4hkUkY3rKpX8ngufPEJ7BxEoKvRsQL5Nw2oQGEoMe3XIaO+bA1xh64XNjdpCSp5nYq/b8b+hqpeD96jcb9+iORvFeo0ubwBgpwLa2jMZ0Ap9nu2evLbVGaVyAdB04t89/1O/w1cDnyilFU=')
@@ -32,6 +30,9 @@ def checkstate():
     state = twitchapp.get_streams('nana803')
     if state:
         line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
+
+timer = Timer(60, checkstate)
+timer.start()
 
 game_key = 0
 # 監聽所有來自 /callback 的 Post Request
