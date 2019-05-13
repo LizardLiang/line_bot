@@ -53,6 +53,7 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    print(event.source.group_id)
     # #wks_th = theater_app.connect_to_sheet()
     # wks_pro = user_proccess.connect_to_spread()
     # user_id = event.source.user_id
