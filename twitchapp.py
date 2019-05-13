@@ -2,7 +2,10 @@ import requests, json
 from bs4 import BeautifulSoup
 
 def get_streams(twitchid):
-    id = twitchid.split(' ')
+    if ' ' in twitchid:
+        id = twitchid.split(' ')
+    else:
+        id = twitchid
     header = {'Client-ID': "tudijxjlggseb3k0gwfy8jwoiach9z"}
     r = requests.get("https://api.twitch.tv/helix/streams?user_login=" + id[1], headers = header)
     r_1 = json.loads(r.content)
