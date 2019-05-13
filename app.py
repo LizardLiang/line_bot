@@ -21,6 +21,8 @@ from threading import Timer
 
 app = Flask(__name__)
 
+groupid = ''
+
 # Channel Access Token
 line_bot_api = LineBotApi('fx3DY+LD68LLi5K+09cpEoPLVfeeb4hkUkY3rKpX8ngufPEJ7BxEoKvRsQL5Nw2oQGEoMe3XIaO+bA1xh64XNjdpCSp5nYq/b8b+hqpeD96jcb9+iORvFeo0ubwBgpwLa2jMZ0Ap9nu2evLbVGaVyAdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
@@ -30,6 +32,7 @@ def checkstate():
     state = twitchapp.get_streams('nana803')
     if state:
         line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
+        line_bot_api.push_message(groupid, TextSendMessage(state))
 
 timer = Timer(60, checkstate)
 timer.start()
@@ -53,6 +56,8 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    global groupid
+    groupid = event.source.group_id
     print(event.source.group_id)
     # #wks_th = theater_app.connect_to_sheet()
     # wks_pro = user_proccess.connect_to_spread()
