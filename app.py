@@ -21,9 +21,9 @@ from bs4 import BeautifulSoup
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('U8y83kp/oua8dGGGGxGaJtPHkPbH0EX5xsIPLSs5mei/WF1jiLLPuFJ3V13LmT8zDsdoXCrmbRfoDrT2mG6wjPaXGkPk+/DxKU4PHSUU1rZ1AMiE043ObnI6ZMyHJEb9HXvoW2zr/y96YvUORU+lYAdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('fx3DY+LD68LLi5K+09cpEoPLVfeeb4hkUkY3rKpX8ngufPEJ7BxEoKvRsQL5Nw2oQGEoMe3XIaO+bA1xh64XNjdpCSp5nYq/b8b+hqpeD96jcb9+iORvFeo0ubwBgpwLa2jMZ0Ap9nu2evLbVGaVyAdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
-handler = WebhookHandler('de13dee56ac904472fb56653553ba55b')
+handler = WebhookHandler('c89a95f7c078c436184ac94826d6f66a')
 
 game_key = 0
 # 監聽所有來自 /callback 的 Post Request
