@@ -1,7 +1,7 @@
 import requests, json
 from bs4 import BeautifulSoup
 
-status = False
+status = True
 
 def get_streams(twitchid):
     if ' ' in twitchid:

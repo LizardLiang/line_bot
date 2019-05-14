@@ -34,7 +34,7 @@ def checkstate():
         line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
         line_bot_api.push_message(groupid, TextSendMessage(state))
 
-timer = Timer(60, checkstate)
+timer = Timer(10, checkstate)
 timer.start()
 
 game_key = 0
