@@ -32,7 +32,7 @@ def checkstate():
     state = twitchapp.get_streams('nana803')
     if state:
         line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
-        line_bot_api.push_message(groupid, TextSendMessage(state))
+        line_bot_api.push_message(, TextSendMessage(state))
 
 timer = Timer(60, checkstate)
 timer.start()
