@@ -54,6 +54,7 @@ def do_something(sc):
         line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
         line_bot_api.push_message(groupid, TextSendMessage(state))
     # do your stuff
+    global keep_run
     if not keep_run:
         s.enter(10, 0, do_something, (sc,))
 
