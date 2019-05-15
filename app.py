@@ -45,6 +45,8 @@ handler = WebhookHandler('c89a95f7c078c436184ac94826d6f66a')
 # thread.start()
 # # this will stop the timer
 
+keep_run = True
+
 s = sched.scheduler(time.time, time.sleep)
 def do_something(sc): 
     state = twitchapp.get_streams('nana803')
@@ -52,7 +54,8 @@ def do_something(sc):
         line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
         line_bot_api.push_message(groupid, TextSendMessage(state))
     # do your stuff
-    s.enter(10, 0, do_something, (sc,))
+    if not keep_run:
+        s.enter(10, 0, do_something, (sc,))
 
 s.enter(10, 0, do_something, (s,))
 s.run()
@@ -61,6 +64,8 @@ game_key = 0
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
+    global keep_run
+    keep_run = False
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
     # get request body as text
@@ -80,9 +85,13 @@ def handle_message(event):
     try:
         groupid = event.source.group_id
         print(event.source.group_id)
-        thread.start()
+        global keep_run
+        keep_run = True
+        r.run()
     except:
-        thread.start()
+        global keep_run
+        keep_run = True
+        r.run()
         pass
     # #wks_th = theater_app.connect_to_sheet()
     # wks_pro = user_proccess.connect_to_spread()
