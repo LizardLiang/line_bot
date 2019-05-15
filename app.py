@@ -87,11 +87,11 @@ def handle_message(event):
         print(event.source.group_id)
         global keep_run
         keep_run = True
-        r.run()
+        s.run()
     except:
         global keep_run
         keep_run = True
-        r.run()
+        s.run()
         pass
     # #wks_th = theater_app.connect_to_sheet()
     # wks_pro = user_proccess.connect_to_spread()
