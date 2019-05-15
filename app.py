@@ -33,6 +33,7 @@ def checkstate():
     if state:
         line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
         line_bot_api.push_message(groupid, TextSendMessage(state))
+    timer.start()
 
 timer = Timer(10, checkstate)
 timer.start()
