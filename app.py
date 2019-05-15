@@ -33,14 +33,12 @@ handler = WebhookHandler('c89a95f7c078c436184ac94826d6f66a')
 
 s = sched.scheduler(time.time, time.sleep)
 def do_something(): 
-    state = twitchapp.get_streams('nana803')
-    if state:
-        line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
-    # do your stuff
     global keep_run
-    if keep_run:
-        time.sleep(5)
-        do_something()
+    while keep_run:
+        state = twitchapp.get_streams('nana803')
+        if state:
+            line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
+        # do your stuff
 
 game_key = 0
 # 監聽所有來自 /callback 的 Post Request

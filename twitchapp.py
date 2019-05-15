@@ -13,10 +13,10 @@ def get_streams(twitchid):
         global status
         if len(r_2) != 0:
             r_3 = r_2[0]
-            if r_3['type'] == 'live' and not status:
+            if r_3['type'] == 'live':# and not status:
                 status = True
                 return 'https://www.twitch.tv/' + id[1] + '\n' + r_3['user_name'] + '\n' + r_3['title'] 
-        elif len(r_2) == 0 and status:
+        elif len(r_2) == 0:# and status:
             status = False
             return 'https://www.twitch.tv/' + id[1] + '\n' + id[1] + ' is currently offline'
     else:
@@ -27,9 +27,9 @@ def get_streams(twitchid):
         r_2 = r_1["data"]
         if len(r_2) != 0:
             r_3 = r_2[0]
-            if r_3['type'] == 'live' and not status:
+            if r_3['type'] == 'live':# and not status:
                 status = True
                 return 'https://www.twitch.tv/' + id + '\n' + r_3['user_name'] + '\n' + r_3['title'] 
-        elif len(r_2) == 0 and status:
+        elif len(r_2) == 0:# and status:
             status = False
             return 'https://www.twitch.tv/' + id + '\n' + id + ' is currently offline'
