@@ -58,9 +58,6 @@ def do_something(sc):
     if keep_run:
         s.enter(10, 0, do_something, (sc,))
 
-s.enter(10, 0, do_something, (s,))
-s.run()
-
 game_key = 0
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -300,3 +297,5 @@ import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+    s.enter(10, 0, do_something, (s,))
+    s.run()
