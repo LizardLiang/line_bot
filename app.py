@@ -83,15 +83,13 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    global groupid
+    global groupid, keep_run
     try:
         groupid = event.source.group_id
         print(event.source.group_id)
-        global keep_run
         keep_run = True
         s.run()
     except:
-        global keep_run
         keep_run = True
         s.run()
         pass
