@@ -10,7 +10,7 @@ from linebot.models import *
 
 from lxml import etree
 
-import requests, threading
+import requests, threading, sched, time
 import random
 import datetime
 import gspread, sys
@@ -28,29 +28,39 @@ line_bot_api = LineBotApi('fx3DY+LD68LLi5K+09cpEoPLVfeeb4hkUkY3rKpX8ngufPEJ7BxEo
 # Channel Secret
 handler = WebhookHandler('c89a95f7c078c436184ac94826d6f66a')
 
-class MyThread(threading.Thread):
-    def __init__(self, event):
-        threading.Thread.__init__(self)
-        self.stopped = event
+# class MyThread(threading.Thread):
+#     def __init__(self, event):
+#         threading.Thread.__init__(self)
+#         self.stopped = event
 
-    def run(self):
-        while not self.stopped.wait(0.5):
-            state = twitchapp.get_streams('nana803')
-            if state:
-                line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
-                line_bot_api.push_message(groupid, TextSendMessage(state))
+#     def run(self):
+#         while not self.stopped.wait(0.5):
+#             state = twitchapp.get_streams('nana803')
+#             if state:
+#                 line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
+#                 line_bot_api.push_message(groupid, TextSendMessage(state))
 
-stopFlag = Event()
-thread = MyThread(stopFlag)
-thread.start()
-# this will stop the timer
-    
+# stopFlag = Event()
+# thread = MyThread(stopFlag)
+# thread.start()
+# # this will stop the timer
+
+s = sched.scheduler(time.time, time.sleep)
+def do_something(sc): 
+    state = twitchapp.get_streams('nana803')
+    if state:
+        line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
+        line_bot_api.push_message(groupid, TextSendMessage(state))
+    # do your stuff
+    s.enter(10, 0, do_something, (sc,))
+
+s.enter(10, 0, do_something, (s,))
+s.run()
 
 game_key = 0
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
-    stopFlag.set()
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
     # get request body as text
