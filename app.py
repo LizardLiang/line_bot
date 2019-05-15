@@ -296,6 +296,6 @@ def handle_join(event): #加入群組，會回復
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
+    t = threading.Thread(target = do_something)
+    t.start()
     app.run(host='0.0.0.0', port=port)
-    s.enter(10, 0, do_something, (s,))
-    s.run()
