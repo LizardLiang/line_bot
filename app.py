@@ -66,11 +66,7 @@ def handle_message(event):
     try:
         groupid = event.source.group_id
         print(event.source.group_id)
-        t.keep_run = True
-        t.start()
     except:
-        t.keep_run = True
-        t.start()
         pass
     # #wks_th = theater_app.connect_to_sheet()
     # wks_pro = user_proccess.connect_to_spread()
@@ -279,6 +275,6 @@ def handle_join(event): #加入群組，會回復
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
-    t = threading.Thread(target = do_something)
+    t = threading.Thread(target = do_something) #這個就開一個新的thread 讓他自己玩得爽
     t.start()
     app.run(host='0.0.0.0', port=port)
