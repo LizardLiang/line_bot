@@ -39,6 +39,7 @@ def do_something():
         if state:
             line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
         # do your stuff
+        time.sleep(5)
 
 game_key = 0
 # 監聽所有來自 /callback 的 Post Request
