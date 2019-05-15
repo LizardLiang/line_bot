@@ -31,6 +31,7 @@ handler = WebhookHandler('c89a95f7c078c436184ac94826d6f66a')
 def checkstate():
     state = twitchapp.get_streams('nana803')
     if state:
+        timer.start()
         line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
         line_bot_api.push_message(groupid, TextSendMessage(state))
     timer.start()
