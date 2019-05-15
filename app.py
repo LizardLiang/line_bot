@@ -19,9 +19,12 @@ import user_id_app, drinks_app, porn_app, movie_app, user_proccess, theater_app,
 from bs4 import BeautifulSoup
 from threading import Timer
 
+groupid = ''
+
+keep_run = True
+
 app = Flask(__name__)
 
-groupid = ''
 
 # Channel Access Token
 line_bot_api = LineBotApi('fx3DY+LD68LLi5K+09cpEoPLVfeeb4hkUkY3rKpX8ngufPEJ7BxEoKvRsQL5Nw2oQGEoMe3XIaO+bA1xh64XNjdpCSp5nYq/b8b+hqpeD96jcb9+iORvFeo0ubwBgpwLa2jMZ0Ap9nu2evLbVGaVyAdB04t89/1O/w1cDnyilFU=')
@@ -44,8 +47,6 @@ handler = WebhookHandler('c89a95f7c078c436184ac94826d6f66a')
 # thread = MyThread(stopFlag)
 # thread.start()
 # # this will stop the timer
-
-keep_run = True
 
 s = sched.scheduler(time.time, time.sleep)
 def do_something(sc): 
