@@ -35,6 +35,7 @@ s = sched.scheduler(time.time, time.sleep)
 def do_something(): 
     global keep_run
     while keep_run:
+        print('checking')
         state = twitchapp.get_streams('nana803')
         if state:
             line_bot_api.push_message('U58e43cf60b31e2ed4a101db4cab57fa6', TextSendMessage(state))
