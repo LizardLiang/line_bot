@@ -24,6 +24,7 @@ def get_streams(twitchid):
         header = {'Client-ID': "tudijxjlggseb3k0gwfy8jwoiach9z"}
         r = requests.get("https://api.twitch.tv/helix/streams?user_login=" + id, headers = header)
         r_1 = json.loads(r.content)
+        print('r_1', r_1)
         r_2 = r_1["data"]
         if len(r_2) != 0:
             r_3 = r_2[0]
