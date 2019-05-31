@@ -48,7 +48,7 @@ game_key = 0
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
-    t.keep_run = False
+    # t.keep_run = False
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
     # get request body as text
